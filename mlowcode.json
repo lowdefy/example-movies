@@ -1,0 +1,46 @@
+{
+  "config": {
+    "theme": {
+      "cssVariables": {
+        "@primary-color": "#012345"
+      },
+      "titles": {
+        "app": "My App",
+        "createAccount": "Sign Up 2",
+        "signIn": "Sign in to your account 2",
+        "forgotPassword": "Reset your password 2",
+        "confirmSignIn": "Confirm SMS Code 2",
+        "confirmSignUp": "Confirm Sign Up 2",
+        "requireNewPassword": "Change your password 2",
+        "accountCreated": "Account registered successfully 2"
+      },
+      "images": {
+        "logo": "https://mrmapp-public.s3.amazonaws.com/mtree/logo-name-300.png",
+        "favicon": "https://mrmapp-public.s3.amazonaws.com/mtree/logo_name_40.png"
+      }
+    },
+    "auth": {
+      "passwords": {
+        "minLength": 8,
+        "require": ["numbers", "special_characters", "uppercase", "lowercase"]
+      },
+      "mfa": {
+        "enforce": "optional",
+        "method": "TOTP"
+      },
+      "verify": "email",
+      "createAccounts": "admin_invite",
+      "userAttributes": [],
+      "advanced": false
+    }
+  },
+  "pages": [
+
+  ],
+  "public": [
+
+  ],
+  "schedule": [
+
+  ]
+}
