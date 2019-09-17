@@ -1,0 +1,103 @@
+{
+  "config": {
+    "git": {
+      "productionBranch": "master"
+    },
+    "theme": {
+      "pages": {
+        "signUp": {
+          "title": "Mflix Demo"
+        }
+      },
+      "images": {
+        "logo": "/images/logo.png"
+      },
+      "cssVariables": {
+        "@primary-color": "#1890ff",
+        "@font-size-sm": "12px"
+      }
+    },
+    "auth": {
+      "passwords": {
+        "minLength": 8,
+        "require": ["numbers", "special_characters", "uppercase", "lowercase"]
+      },
+      "mfa": {
+        "enforce": "optional",
+        "method": "TOTP"
+      },
+      "verify": "email",
+      "createAccounts": "self_sign_up",
+      "advanced": false
+    }
+  },
+
+  "groups": [
+    {
+      "id": "lowdefy_users",
+      "pages": ["page_trends"]
+    }
+  ],
+
+  "connections": [
+    {
+      "id": "mongodb_mflix_comments",
+      "type": "mongodb_collection",
+      "properties": {
+        "databaseId": "mongodb_mflix",
+        "collection": "comments"
+      }
+    },
+    {
+      "id": "mongodb_mflix_movies",
+      "type": "mongodb_collection",
+      "properties": {
+        "databaseURI": { "_secret": "mongodb_mflix_uri" },
+        "collection": "movies",
+        "read": true,
+        "write": true
+      }
+    },
+    {
+      "id": "api_tmdb",
+      "type": "https",
+      "properties": {
+        "headers": {
+          "Authorization": { "_secret": "tmdb_api_key" }
+        } ,
+        "baseUrl": "https://api.themoviedb.org/3",
+        "allowMethods": ["get", "post"]
+      }
+    }
+  ],
+
+  "layout": {
+    "menu": {
+      "type": "side_menu",
+      "properties": {
+        "autoCollapse": false
+      },
+      "links": [
+        {
+          "name": "menu_trends",
+          "type": "menu_link",
+          "pageId": "page_trends",
+          "properties": {
+            "title": "Movie Trends",
+            "icon" : "pie-chart"
+          }
+        }
+      ]
+    },
+    "footer": {
+      "properties": {
+        "body": "Made with Lowdefy"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_ref": "/trends/page_trends.json"
+    }
+  ]
+}

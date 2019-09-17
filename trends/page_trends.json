@@ -1,0 +1,25 @@
+{
+  "id": "page_trends",
+  "properties": { "title": "Movie Trends" },
+
+  "requests": [
+    { "_ref": "/trends/aggregations/agg_movies_by_year.json" }
+  ],
+
+  "components": [
+    {
+      "name": "chart_movies_by_year",
+      "type": "amcharts_xy",
+      "properties": {
+        "data": { "_data": "agg_movies_by_year" },
+        "series": [
+          {
+            "type": "lineSeries",
+            "valueY": "count",
+            "dateX": "year"
+          }
+        ]
+      }
+    }
+  ]
+}

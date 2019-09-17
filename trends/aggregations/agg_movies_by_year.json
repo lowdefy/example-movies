@@ -1,0 +1,26 @@
+{
+  "id": "agg_movies_by_year",
+  "type": "mongodb_aggregation",
+  "connectionId": "mongodb_mflix_movies",
+  "properties": {
+    "pipeline": [
+      { 
+        "$group": {
+          "_id": { "$dateFromParts": { "year": { "$year": "released" } } },
+          "count": { "$sum": 1 },
+          "avg_imdb": { "$avg": "$imdb.rating" }
+        }
+      },
+      { 
+        "$addFields": {
+          "year": "$id"  
+        }
+      },
+      {
+        "$sort": { 
+          "year": 1 
+        }
+      }
+    ]
+  }
+}
