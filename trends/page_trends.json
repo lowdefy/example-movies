@@ -25,6 +25,25 @@
       },
       "components": [
         {
+          "name": "filter_sort_by",
+          "type": "select_input",
+          "properties": {
+            "label": "Sort By",
+            "placeholder": "Select Sort By",
+            "defaultValue": "$imdb_rating",
+            "options": [
+              {
+                "label": "IMDb Rating",
+                "value": "$imdb_rating"
+              },
+              {
+                "label": "Award Wins",
+                "value": "$award_wins"
+              }
+            ]
+          }
+        },
+        {
           "name": "filter_select_month_from",
           "type": "month_input",
           "box": {
@@ -46,6 +65,15 @@
             "label": "End Month",
             "placeholder": "Select End Month",
             "defaultValue": "2015-12"
+          }
+        },
+        {
+          "name": "filter_select_type",
+          "type": "multiple_select_input",
+          "properties": {
+            "label": "Type (Movies/ Series)",
+            "placeholder": "Select Type",
+            "options": { "_request": "agg_filter_select_type_options" }
           }
         },
         {

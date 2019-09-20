@@ -1,0 +1,18 @@
+{ "$match": {
+    "$expr": {
+        "$and": [
+            { "$lte": [ "$released", { "_state": "filter_select_month_to" } ] },
+            { "$gte": [ "$released", { "_state": "filter_select_month_from" } ] },
+            { "$in": [ "$type", { "_state": "filter_select_type" } ] },
+            { "$gt": [ { "$size": { "$setIntersection": [ { "$ifNull": [ "$genres", [] ] },
+                                        { "_state": "filter_select_genre" } ] } }, 0 ] 
+            },
+            { "$gt": [ { "$size": { "$setIntersection": [ { "$ifNull": [ "$countries", [] ] },
+                                        { "_state": "filter_select_country" } ] } }, 0 ] 
+            },
+            { "$gt": [ { "$size": { "$setIntersection": [ { "$ifNull": [ "$languages", [] ] },
+                                        { "_state": "filter_select_language" } ] } }, 0 ] 
+            }
+        ]
+    }
+} }
