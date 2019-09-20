@@ -5,6 +5,7 @@
     "linkedTo": [
       "_state.filter.filter_select_month_from",
       "_state.filter.filter_select_month_to",
+      "_state.filter.filter_select_type",
       "_state.filter.filter_select_genre",
       "_state.filter.filter_select_country",
       "_state.filter.filter_select_language",
@@ -16,19 +17,19 @@
         { "$group": {
             "_id": { "$dateFromParts": { "year": { "$year": "$released" } } },
             "avg_imdb_rating": { "$avg": "$imdb.rating" },
-            "avg_tomatoes_viewers_rating": { "$avg": "$tomatoes.viewer.rating" },
-            "avg_tomatoes_viewers_meter": { "$avg": "$tomatoes.viewer.meter" },
-            "avg_tomatoes_critics_rating": { "$avg": "$tomatoes.critic.rating" },
-            "avg_tomatoes_critics_meter": { "$avg": "$tomatoes.critic.meter" }
+            "avg_tomatoes_viewer_rating": { "$avg": "$tomatoes.viewer.rating" },
+            "avg_tomatoes_viewer_meter": { "$avg": "$tomatoes.viewer.meter" },
+            "avg_tomatoes_critic_rating": { "$avg": "$tomatoes.critic.rating" },
+            "avg_tomatoes_critic_meter": { "$avg": "$tomatoes.critic.meter" }
         } },
         { "$project": {
             "_id": 0,
             "year": { "$dateToString": { "date": "$_id", "format": "%Y-%m-%d" } },
             "avg_imdb_rating": 1,
-            "avg_tomatoes_viewers_rating": 1,
-            "avg_tomatoes_viewers_meter": 1,
-            "avg_tomatoes_critics_rating": 1,
-            "avg_tomatoes_critics_meter": 1
+            "avg_tomatoes_viewer_rating": 1,
+            "avg_tomatoes_viewer_meter": 1,
+            "avg_tomatoes_critic_rating": 1,
+            "avg_tomatoes_critic_meter": 1
         } },
         { "$sort": {
             "year": 1
