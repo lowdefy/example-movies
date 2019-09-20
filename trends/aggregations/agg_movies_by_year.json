@@ -5,6 +5,7 @@
   "linkedTo": [
     "_state.filter.filter_select_month_from",
     "_state.filter.filter_select_month_to",
+    "_state.filter.filter_select_type",
     "_state.filter.filter_select_genre",
     "_state.filter.filter_select_country",
     "_state.filter.filter_select_language",
