@@ -3,7 +3,6 @@
   "properties": { "title": "Movie Trends" },
 
   "requests": [
-    { "_ref": "/trends/aggregations/agg_movies_by_year.json" }
     { "_ref": "/trends/aggregations/agg_filter_select_country_options.json" },
     { "_ref": "/trends/aggregations/agg_filter_select_genre_options.json" },
     { "_ref": "/trends/aggregations/agg_filter_select_language_options.json" },
