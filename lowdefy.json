@@ -35,7 +35,7 @@
   "groups": [
     {
       "id": "lowdefy_users",
-      "pages": ["page_trends"]
+      "pageIds": ["page_trends"]
     }
   ],
 
@@ -44,18 +44,20 @@
       "id": "mongodb_mflix_comments",
       "type": "mongodb_collection",
       "properties": {
-        "databaseId": "mongodb_mflix",
-        "collection": "comments"
+        "databaseUri": { "_secret": "mongodb_mflix_uri" },
+        "collection": "comments",
+        "read": true,
+        "write": true
       }
     },
     {
       "id": "mongodb_mflix_movies",
       "type": "mongodb_collection",
       "properties": {
-        "databaseURI": { "_secret": "mongodb_mflix_uri" },
+        "databaseUri": { "_secret": "mongodb_mflix_uri" },
         "collection": "movies",
         "read": true,
-        "write": true
+        "write": false
       }
     },
     {
