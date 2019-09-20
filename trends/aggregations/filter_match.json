@@ -3,6 +3,7 @@
         "$and": [
             { "$lte": [ "$released", { "_state": "filter_select_month_to" } ] },
             { "$gte": [ "$released", { "_state": "filter_select_month_from" } ] },
+            { "$in": [ "$type", { "_state": "filter_select_type" } ] },
             { "$gt": [ { "$size": { "$setIntersection": [ { "$ifNull": [ "$genres", [] ] },
                                         { "_state": "filter_select_genre" } ] } }, 0 ] 
             },
