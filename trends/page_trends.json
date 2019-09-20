@@ -8,18 +8,99 @@
 
   "components": [
     {
-      "name": "chart_movies_by_year",
-      "type": "amcharts_xy",
+      "name": "description_text",
+      "type": "nunjucks_template",
+      "box" :{
+        "width": 12
+      },
       "properties": {
-        "data": { "_data": "agg_movies_by_year" },
-        "series": [
-          {
-            "type": "lineSeries",
-            "valueY": "count",
-            "dateX": "year"
-          }
-        ]
+
       }
+    },
+    {
+      "name": "filter_column",
+      "type": "column",
+      "box": {
+        "width": 12
+      },
+      "components": [
+        {
+          "name": "filter_select_month_from",
+          "type": "month_input",
+          "box": {
+            "width": 12
+          },
+          "properties": {
+            "label": "Start Month",
+            "placeholder": "Select Start Month",
+            "defaultValue": "1900-01"
+          }
+        },
+        {
+          "name": "filter_select_month_to",
+          "type": "month_input",
+          "box": {
+            "width": 12
+          },
+          "properties": {
+            "label": "End Month",
+            "placeholder": "Select End Month",
+            "defaultValue": "2015-12"
+          }
+        },
+        {
+          "name": "filter_select_genre",
+          "type": "multiple_select_input",
+          "properties": {
+            "label": "Genres",
+            "placeholder": "Select Genres",
+            "options": { "_request": "agg_filter_select_genre_options" }
+          }
+        },
+        {
+          "name": "filter_select_country",
+          "type": "multiple_select_input",
+          "properties": {
+            "label": "Countries",
+            "placeholder": "Select Countries",
+            "options": { "_request": "agg_filter_select_country_options" }
+          }
+        },
+        {
+          "name": "filter_select_language",
+          "type": "multiple_select_input",
+          "properties": {
+            "label": "Languages",
+            "placeholder": "Select Languages",
+            "options": { "_request": "agg_filter_select_language_options" }
+          }
+        },
+        {
+          "name": "filter_calculate_button",
+          "type": "button_input",
+          "box": {
+            "width": 12
+          },
+          "properties": {
+            "label": "Calculate",
+            "icon": "redo",
+            "size": "large"
+          }
+        },
+        {
+          "name": "filter_reset_button",
+          "type": "button_input",
+          "box": {
+            "width": 12
+          },
+          "properties": {
+            "label": "Reset",
+            "type": "normal",
+            "icon": "undo",
+            "size": "large"
+          }
+        }
+      ]
     }
   ]
 }
