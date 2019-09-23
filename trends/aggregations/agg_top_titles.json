@@ -1,5 +1,5 @@
 {
-    "name": "agg_top20_titles",
+    "name": "agg_top_titles",
     "type": "mongodb_aggregation",
     "connectionId": "mongodb_mflix_movies",
     "linkedTo": [
