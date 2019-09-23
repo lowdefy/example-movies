@@ -137,6 +137,9 @@
           }
         }
       ]
-    }
+    },
+    { "_ref": "/trends/charts/chart_genres_by_year.json" },
+    { "_ref": "/trends/charts/chart_genres_by_year_stacked.json" },
+    { "_ref": "/trends/charts/chart_top_actors_ratings.json" }
   ]
 }
