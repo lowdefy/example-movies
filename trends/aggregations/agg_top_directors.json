@@ -1,5 +1,5 @@
 {
-    "name": "agg_top20_directors",
+    "name": "agg_top_directors",
     "type": "mongodb_aggregation",
     "connectionId": "mongodb_mflix_movies",
     "linkedTo": [
