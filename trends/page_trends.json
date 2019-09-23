@@ -3,7 +3,15 @@
   "properties": { "title": "Movie Trends" },
 
   "requests": [
-    { "_ref": "/trends/aggregations/agg_movies_by_year.json" }
+    { "_ref": "/trends/aggregations/agg_filter_select_country_options.json" },
+    { "_ref": "/trends/aggregations/agg_filter_select_genre_options.json" },
+    { "_ref": "/trends/aggregations/agg_filter_select_language_options.json" },
+    { "_ref": "/trends/aggregations/agg_filter_select_type_options.json" },
+    { "_ref": "/trends/aggregations/agg_genres_by_year.json" },
+    { "_ref": "/trends/aggregations/agg_ratings_by_year.json" },
+    { "_ref": "/trends/aggregations/agg_top20_actors.json" },
+    { "_ref": "/trends/aggregations/agg_top20_directors.json" },
+    { "_ref": "/trends/aggregations/agg_top20_titles.json" }
   ],
 
   "components": [
@@ -129,6 +137,9 @@
           }
         }
       ]
-    }
+    },
+    { "_ref": "/trends/charts/chart_genres_by_year.json" },
+    { "_ref": "/trends/charts/chart_genres_by_year_stacked.json" },
+    { "_ref": "/trends/charts/chart_top_actors_ratings.json" }
   ]
 }
