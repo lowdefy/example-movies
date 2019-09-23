@@ -1,0 +1,71 @@
+{
+    "name": "genres_by_year_stacked",
+    "type": "XYChart",
+    "dataSource": {
+        "url": "/aggregations/agg_genres_by_year.json"
+    },
+    "xAxes": [
+        {
+          "type": "DateAxis",
+          "title": {
+            "text": "Year"
+          },
+          "dataFields": {
+            "category": "year",
+            "title": {
+              "text": "Year"
+            }
+          }
+        }
+      ],
+      "yAxes": [
+        {
+          "type": "ValueAxis",
+          "title": {
+            "text": "Movies Made"
+          },
+          "calculateTotals": true,
+          "min": 0,
+          "max": 100,
+          "strictMinMax": true
+        }
+      ],
+    "series": [
+        {
+            "type": "LineSeries",
+            "name": "Drama",
+            "strokeWidth": 3,
+            "dataFields": {
+              "valueY": "Drama",
+              "valueYShow": "totalPercent",
+              "dateX": "year"
+            },
+            "tooltipText": "{name}: {valueY}"
+        },
+        {
+            "type": "LineSeries",
+            "name": "Action",
+            "strokeWidth": 3,
+            "dataFields": {
+              "valueY": "Action",
+              "valueYShow": "totalPercent",
+              "dateX": "year"
+            },
+            "tooltipText": "{name}: {valueY}"
+        },
+        {
+            "type": "LineSeries",
+            "name": "Comedy",
+            "strokeWidth": 3,
+            "dataFields": {
+              "valueY": "Comedy",
+              "valueYShow": "totalPercent",
+              "dateX": "year"
+            },
+            "tooltipText": "{name}: {valueY}"
+        }
+    ],
+    "legend": {
+        "type": "Legend"
+  }
+}
