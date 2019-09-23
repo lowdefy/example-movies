@@ -1,5 +1,5 @@
 {
-    "name": "agg_top20_directors",
+    "name": "agg_top_actors",
     "type": "mongodb_aggregation",
     "connectionId": "mongodb_mflix_movies",
     "linkedTo": [
@@ -25,7 +25,7 @@
         { 
           "$group": {
             "_id": "$title",
-            "directors": { "$max": "$directors" },
+            "cast": { "$max": "$cast" },
             "imdb_rating": { "$max": "$imdb.rating" },
             "tomatoes_critic_rating": { "$max": "$tomatoes.critic.rating" },
             "tomatoes_critic_meter": { "$max": "$tomatoes.critic.meter" },
@@ -36,11 +36,11 @@
           }
         },
         { "$unwind": {
-          "path": "$directors"
+          "path": "$cast"
         } },
         { 
           "$group": {
-            "_id": "$directors",
+            "_id": "$cast",
             "count": { "$sum": 1 },
             "titles": { "$push": "$_id" },
             "imdb_rating": { "$avg": "$imdb_rating" },
@@ -66,7 +66,7 @@
         { "$limit": 20 },
         { "$project": {
             "_id": 0,
-            "director": "$_id",
+            "actor": "$_id",
             "movies": "$titles",
             "imdb_rating": "$imdb_rating",
             "tomatoes_critic_rating": "$tomatoes_critic_rating",
