@@ -2,14 +2,13 @@
     "name": "agg_filter_select_language_options",
     "type": "mongodb_aggregation",
     "connectionId": "mongodb_mflix_movies",
-    "linkedTo": [
+    "watch": [
       "_state.filter.filter_select_month_from",
       "_state.filter.filter_select_month_to",
       "_state.filter.filter_select_type",
       "_state.filter.filter_select_genre",
       "_state.filter.filter_select_country",
-      "_state.filter.filter_select_language",
-      "_state.filter.filter_calculate_button"
+      "_state.filter.filter_select_language"
     ],
     "properties": {
       "pipeline": [
