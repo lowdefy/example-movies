@@ -3,18 +3,18 @@
   "properties": { "title": "Movie Trends" },
 
   "requests": [
-    { "_ref": "/trends/aggregations/agg_filter_select_country_options.json" },
-    { "_ref": "/trends/aggregations/agg_filter_select_genre_options.json" },
-    { "_ref": "/trends/aggregations/agg_filter_select_language_options.json" },
-    { "_ref": "/trends/aggregations/agg_filter_select_type_options.json" },
-    { "_ref": "/trends/aggregations/agg_genres_by_year.json" },
-    { "_ref": "/trends/aggregations/agg_ratings_by_year.json" },
-    { "_ref": "/trends/aggregations/agg_top20_actors.json" },
-    { "_ref": "/trends/aggregations/agg_top20_directors.json" },
-    { "_ref": "/trends/aggregations/agg_top20_titles.json" }
+    { "_ref": "trends/aggregations/agg_filter_select_country_options.json" },
+    { "_ref": "trends/aggregations/agg_filter_select_genre_options.json" },
+    { "_ref": "trends/aggregations/agg_filter_select_language_options.json" },
+    { "_ref": "trends/aggregations/agg_filter_select_type_options.json" },
+    { "_ref": "trends/aggregations/agg_genres_by_year.json" },
+    { "_ref": "trends/aggregations/agg_ratings_by_year.json" },
+    { "_ref": "trends/aggregations/agg_top20_actors.json" },
+    { "_ref": "trends/aggregations/agg_top20_directors.json" },
+    { "_ref": "trends/aggregations/agg_top20_titles.json" }
   ],
 
-  "components": [
+  "blocks": [
     {
       "name": "description_text",
       "type": "nunjucks_template",
@@ -31,7 +31,7 @@
       "box": {
         "width": 12
       },
-      "components": [
+      "blocks": [
         {
           "name": "filter_sort_by",
           "type": "select_input",
@@ -138,8 +138,8 @@
         }
       ]
     },
-    { "_ref": "/trends/charts/chart_genres_by_year.json" },
-    { "_ref": "/trends/charts/chart_genres_by_year_stacked.json" },
-    { "_ref": "/trends/charts/chart_top_actors_ratings.json" }
+    { "_ref": "trends/charts/chart_genres_by_year.json" },
+    { "_ref": "trends/charts/chart_genres_by_year_stacked.json" },
+    { "_ref": "trends/charts/chart_top_actors_ratings.json" }
   ]
 }
