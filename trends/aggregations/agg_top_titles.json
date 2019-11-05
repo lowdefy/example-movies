@@ -2,7 +2,7 @@
     "name": "agg_top_titles",
     "type": "mongodb_aggregation",
     "connectionId": "mongodb_mflix_movies",
-    "linkedTo": [
+    "watch": [
       "_state.filter.filter_calculate_button"
     ],
     "properties": {
