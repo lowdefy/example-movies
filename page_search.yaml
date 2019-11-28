@@ -1,0 +1,126 @@
+id: page1
+properties:
+  title: Movie Search  🔎
+requests:
+  - name: req_search
+    type: mongodb_aggregation
+    connectionId: mongodb_mflix_movies
+    properties:
+      pipeline:
+        - $match:
+            $text:
+              $search:
+                _nunjucks: "{{ search_input }}"
+        - $sort:
+            score:
+              $meta: textScore
+        - $limit: 20
+        - $project:
+            title: 1
+            plot: 1
+            likes:
+              $ifNull:
+                - $likes
+                - 0
+mutations:
+  - name: mutation_like_movie
+    type: mongodb_update_one
+    connectionId: mongodb_mflix_movies
+    properties:
+      filter:
+        _id:
+          _state: results.$._id
+      update:
+        $inc:
+          likes: 1
+
+blocks:
+  - name: card_search
+    type: card
+    label:
+      title: Search for a movie
+    blocks:
+      - name: search_input
+        type: text_input
+        label:
+          title: ""
+        box:
+          width: 16
+      - name: search_button
+        type: button_input
+        box:
+          width: 4
+        label:
+          title: Search
+        properties:
+          icon: search
+        actions:
+          onClick:
+            - refresh(): req_search
+            - set():
+                results:
+                  _request: req_search
+      - name: reset_button
+        type: button_input
+        box:
+          width: 4
+        label:
+          title: Reset
+        properties:
+          type: default
+          icon: reload
+        actions:
+          onClick:
+            - reset(): true
+  - name: results_card
+    type: card
+    blocks:
+      - name: results_header
+        type: markdown
+        properties:
+          content: "# Results"
+      - name: results
+        type: list
+        properties:
+          hideAddButton: true
+          hideRemoveButton: true
+        blocks:
+          - name: results.$.describtion
+            type: markdown
+            properties:
+              content:
+                _nunjucks:
+                  on:
+                    _state: results.$
+                  template: |
+                    ### {{ title }}
+                    {{ plot }}
+                    ##### Likes: {{ likes }}
+          - name: results.$.like_button
+            type: button_input
+            label:
+              title: Like
+            box:
+              width: 12
+            properties:
+              icon: like
+            actions:
+              onClick:
+                - mutate(): mutation_like_movie
+                - set():
+                    results.$.likes:
+                      _mql_expr:
+                        $add:
+                          - _state: results.$.likes
+                          - 1
+          - name: results.$.view_button
+            type: button_input
+            label:
+              title: View Details
+            box:
+              width: 12
+            properties:
+              icon: table
+            actions:
+              onClick:
+                - link(): /page/page2
