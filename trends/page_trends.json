@@ -17,16 +17,17 @@
   "blocks": [
     {
       "name": "description_text",
-      "type": "nunjucks_template",
+      "type": "markdown",
       "box" :{
         "width": 12
       },
       "properties": {
+        "content": 
 
       }
     },
     {
-      "name": "filter_column",
+      "name": "filter_card",
       "type": "column",
       "box": {
         "width": 12

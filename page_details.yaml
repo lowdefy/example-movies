@@ -1,0 +1,46 @@
+id: page2
+properties:
+  title: Movie Details 🎬
+initialState:
+  _request: req_movie_details
+requests:
+  - name: req_movie_details
+    type: mongodb_find_one
+    connectionId: mongodb_mflix_movies
+    properties:
+      query:
+        _id:
+          _input: _id
+blocks:
+  - name: details_card
+    type: card
+    box:
+      minHeight: 24
+    blocks:
+      - name: details_markdown
+        type: markdown
+        properties:
+          content:
+            _nunjucks: |
+              {% if _id %}
+              # {{ title }}
+
+              ![poster]({{ poster }})
+
+              {{ fullplot }}
+
+              ### Cast
+              {% for actor in cast %}
+              - {{ actor }}
+              {% endfor %}
+
+              ### Directors
+              {% for director in directors %}
+              - {{ director }}
+              {% endfor %}
+
+              ### Writers
+              {% for writer in writers %}
+              - {{ writer }}
+              {% endfor %}
+              {% endif %}

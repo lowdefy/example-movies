@@ -1,43 +1,5 @@
 {
-  "config": {
-    "git": {
-      "productionBranch": "master"
-    },
-    "theme": {
-      "pages": {
-        "signUp": {
-          "title": "Mflix Demo"
-        }
-      },
-      "images": {
-        "logo": "/images/logo.png"
-      },
-      "cssVariables": {
-        "@primary-color": "#1890ff",
-        "@font-size-sm": "12px"
-      }
-    },
-    "auth": {
-      "passwords": {
-        "minLength": 8,
-        "require": ["numbers", "special_characters", "uppercase", "lowercase"]
-      },
-      "mfa": {
-        "enforce": "optional",
-        "method": "TOTP"
-      },
-      "verify": "email",
-      "createAccounts": "self_sign_up",
-      "advanced": false
-    }
-  },
-
-  "groups": [
-    {
-      "id": "lowdefy_users",
-      "pageIds": ["page_trends"]
-    }
-  ],
+  "config": {},
 
   "connections": [
     {
@@ -57,18 +19,7 @@
         "databaseUri": { "_secret": "mongodb_mflix_uri" },
         "collection": "movies",
         "read": true,
-        "write": false
-      }
-    },
-    {
-      "id": "api_tmdb",
-      "type": "https",
-      "properties": {
-        "headers": {
-          "Authorization": { "_secret": "tmdb_api_key" }
-        } ,
-        "baseUrl": "https://api.themoviedb.org/3",
-        "allowMethods": ["get", "post"]
+        "write": true
       }
     }
   ],
@@ -81,25 +32,32 @@
       },
       "links": [
         {
-          "name": "menu_trends",
+          "name": "menu_search",
           "type": "menu_link",
-          "pageId": "page_trends",
+          "pageId": "page1",
           "properties": {
-            "title": "Movie Trends",
-            "icon" : "pie-chart"
+            "title": "Search",
+            "icon": "search"
+          }
+        },
+        {
+          "name": "menu_details",
+          "type": "menu_link",
+          "pageId": "page2",
+          "properties": {
+            "title": "Details",
+            "icon": "table"
           }
         }
       ]
-    },
-    "footer": {
-      "properties": {
-        "body": "Made with Lowdefy"
-      }
     }
   },
   "pages": [
     {
-      "_ref": "/trends/page_trends.json"
+      "_ref": "page_search.yaml"
+    },
+    {
+      "_ref": "page_details.yaml"
     }
   ]
 }
