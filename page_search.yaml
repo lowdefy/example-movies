@@ -1,6 +1,6 @@
 id: page1
 properties:
-  title: Movie Search  🔎
+  title: Movie Search 🔎
 requests:
   - name: req_search
     type: mongodb_aggregation
@@ -72,13 +72,6 @@ blocks:
         actions:
           onClick:
             - reset(): true
-  - name: results_card
-    type: card
-    blocks:
-      - name: results_header
-        type: markdown
-        properties:
-          content: "# Results"
       - name: results
         type: list
         properties:
@@ -123,4 +116,9 @@ blocks:
               icon: table
             actions:
               onClick:
-                - link(): /page/page2
+                - link():
+                    _nunjucks:
+                      template: /page/page2/?_id={{id}}
+                      on:
+                        id:
+                          _state: results.$._id
