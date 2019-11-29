@@ -22,6 +22,13 @@ requests:
               $ifNull:
                 - $likes
                 - 0
+            liked_by_user:
+              $in:
+                - _user: id
+                - $ifNull:
+                    - $liked_by
+                    - []
+
 mutations:
   - name: mutation_like_movie
     type: mongodb_update_one
@@ -33,6 +40,9 @@ mutations:
       update:
         $inc:
           likes: 1
+        $push:
+          liked_by:
+            _user: id
 
 blocks:
   - name: card_search
@@ -78,7 +88,7 @@ blocks:
           hideAddButton: true
           hideRemoveButton: true
         blocks:
-          - name: results.$.describtion
+          - name: results.$.description
             type: markdown
             properties:
               content:
@@ -97,10 +107,13 @@ blocks:
               width: 12
             properties:
               icon: like
+              disabled:
+                _state: results.$.liked_by_user
             actions:
               onClick:
                 - mutate(): mutation_like_movie
                 - set():
+                    results.$.liked_by_user: true
                     results.$.likes:
                       _mql_expr:
                         $add:
@@ -116,9 +129,8 @@ blocks:
               icon: table
             actions:
               onClick:
-                - link():
-                    _nunjucks:
-                      template: /page/page2/?_id={{id}}
-                      on:
-                        id:
-                          _state: results.$._id
+                - pageLink():
+                    pageId: page2
+                    input:
+                      _id:
+                        _state: results.$._id
