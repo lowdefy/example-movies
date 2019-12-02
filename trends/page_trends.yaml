@@ -1,0 +1,75 @@
+id: page3
+properties:
+  title: Movie Trends
+requests:
+  - _ref: trends/aggregations/req_filter_start_decade.yaml
+  - _ref: trends/aggregations/req_filter_end_decade.yaml
+  - _ref: trends/aggregations/req_genres_by_decade.yaml
+
+blocks:
+  - name: description_card
+    type: card
+    box:
+      width: 12
+    blocks:
+      - name: description_text
+        type: markdown
+
+  - name: filter_card
+    type: card
+    box:
+      width: 12
+    blocks:
+      - name: filter_start_decade
+        type: select_input
+        label:
+          title: Start Decade
+        box:
+          width: 12
+        defaultValue: 1890
+        properties:
+          options:
+            _request: req_filter_start_decade
+      - name: filter_end_decade
+        type: select_input
+        label:
+          title: End Decade
+        box:
+          width: 12
+        defaultValue: 2000
+        properties:
+          options:
+            _request: req_filter_end_decade
+
+      - name: filter_calculate_button
+        type: button_input
+        label:
+          title: Calculate
+        box:
+          width: 12
+        properties:
+          icon: filter
+          size: large
+        actions:
+          onClick:
+            - refresh(): req_genres_by_decade
+      - name: filter_reset_button
+        type: button_input
+        label:
+          title: Reset
+        box:
+          width: 12
+        properties:
+          type: normal
+          icon: undo
+          size: large
+        actions:
+          onClick:
+            - reset(): true
+            - refresh(): req_genres_by_decade
+  - name: genre_by_decade_card
+    type: card
+    label:
+      title: Movie genres by decade
+    blocks:
+      - _ref: trends/charts/chart_genres_by_decade.yaml

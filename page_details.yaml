@@ -117,4 +117,4 @@ blocks:
                   template: |
                     ### {{ name }}
                     ##### {{ text }}
-                    {{ date }}
+                    {{ date | date('D MMM, YYYY') }}

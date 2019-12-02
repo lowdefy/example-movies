@@ -1,0 +1,27 @@
+name: chart_genres_by_decade
+type: amcharts_4_xy
+properties:
+  data:
+    _request: req_genres_by_decade
+  xAxes:
+    - type: CategoryAxis
+      title:
+        text: Decade
+      dataFields:
+        category: decade
+        title:
+          text: Decade
+  yAxes:
+    - type: ValueAxis
+      title:
+        text: Movies Made
+  series:
+    _ref:
+      path: trends/charts/dynamic_series.yaml
+      vars:
+        requestName: req_genres_by_decade
+        categoryX: decade
+  legend:
+    type: Legend
+  cursor:
+    type: XYCursor
