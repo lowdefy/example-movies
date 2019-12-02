@@ -114,7 +114,7 @@
         },
         {
           "name": "filter_calculate_button",
-          "type": "button_input",
+          "type": "button",
           "box": {
             "width": 12
           },
@@ -126,7 +126,7 @@
         },
         {
           "name": "filter_reset_button",
-          "type": "button_input",
+          "type": "button",
           "box": {
             "width": 12
           },
