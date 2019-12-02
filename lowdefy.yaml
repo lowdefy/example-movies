@@ -1,0 +1,32 @@
+connections:
+  - id: mongodb_mflix_comments
+    type: mongodb_collection
+    properties:
+      databaseUri:
+        _secret: mongodb_mflix_uri
+      databaseName: sample_mflix
+      collection: comments
+      read: true
+      write: true
+  - id: mongodb_mflix_movies
+    type: mongodb_collection
+    properties:
+      databaseUri:
+        _secret: mongodb_mflix_uri
+      databaseName: sample_mflix
+      collection: movies
+      read: true
+      write: true
+layout:
+  menu:
+    type: header_menu
+    links:
+      - name: menu_search
+        type: menu_link
+        pageId: page1
+        properties:
+          title: Search
+          icon: search
+pages:
+  - _ref: page_search.yaml
+  - _ref: page_details.yaml
