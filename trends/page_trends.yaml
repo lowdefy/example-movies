@@ -5,6 +5,7 @@ requests:
   - _ref: trends/aggregations/req_filter_start_decade.yaml
   - _ref: trends/aggregations/req_filter_end_decade.yaml
   - _ref: trends/aggregations/req_genres_by_decade.yaml
+  - _ref: trends/aggregations/req_top_awards.yaml
 
 blocks:
   - name: description_card
@@ -42,7 +43,7 @@ blocks:
             _request: req_filter_end_decade
 
       - name: filter_calculate_button
-        type: button_input
+        type: button
         label:
           title: Calculate
         box:
@@ -54,7 +55,7 @@ blocks:
           onClick:
             - refresh(): req_genres_by_decade
       - name: filter_reset_button
-        type: button_input
+        type: button
         label:
           title: Reset
         box:
@@ -67,9 +68,6 @@ blocks:
           onClick:
             - reset(): true
             - refresh(): req_genres_by_decade
-  - name: genre_by_decade_card
-    type: card
-    label:
-      title: Movie genres by decade
-    blocks:
-      - _ref: trends/charts/chart_genres_by_decade.yaml
+  - _ref: trends/charts/chart_genres_by_decade.yaml
+  - _ref: trends/charts/chart_genres_by_decade_stacked.yaml
+  - _ref: trends/charts/table_top_awards.yaml

@@ -1,0 +1,20 @@
+name: top_awards_card
+type: card
+label:
+  title: Top Awards
+blocks:
+  - name: table_top_awards
+    type: ag_grid
+    properties:
+      rowData:
+        _request: req_top_awards
+      columnDefs:
+        - headerName: Title
+          field: title
+          width: 300
+        - headerName: Award Wins
+          field: wins
+          width: 300
+        - headerName: Award Nominations
+          field: nominations
+          width: 300

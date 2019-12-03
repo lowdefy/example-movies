@@ -1,9 +1,9 @@
-name: genre_by_decade_card
+name: genre_by_decade_stacked_card
 type: card
 label:
-  title: Number of Movies by Genre over Time
+  title: Percent of Movies by Genre over Time
 blocks:
-  - name: chart_genres_by_decade
+  - name: chart_genres_by_decade_stacked
     type: amcharts_4_xy
     properties:
       data:
@@ -18,19 +18,23 @@ blocks:
               text: Decade
       yAxes:
         - type: ValueAxis
-          title:
-            text: Movies Made
+          calculateTotals: true
+          min: 0
+          max: 100
+          strictMinMax: true
           cursorTooltipEnabled: false
+          title:
+            text: Percent of Movies Made
       series:
         _ref:
           path: trends/charts/dynamic_series.yaml
           vars:
             requestName: req_genres_by_decade
             categoryX: decade
-            valueYShow: value
-            stacked: false
+            valueYShow: totalPercent
+            stacked: true
             fillOpacity: 1
-            legendItemValueText: "{valueY}"
+            legendItemValueText: "{valueY.totalPercent}"
             tooltipText: "{name}"
       legend:
         type: Legend

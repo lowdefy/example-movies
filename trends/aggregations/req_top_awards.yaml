@@ -1,0 +1,13 @@
+name: req_top_awards
+type: mongodb_aggregation
+connectionId: mongodb_mflix_movies
+properties:
+  pipeline:
+    - $sort:
+        awards.wins: -1
+        awards.nominations: -1
+    - $limit: 20
+    - $project:
+        title: 1
+        wins: $awards.wins
+        nominations: $awards.nominations
