@@ -1,0 +1,28 @@
+_mql_aggregate:
+  on:
+    _request:
+      _var: requestName
+  pipeline:
+    - "$project":
+        obj:
+          $objectToArray: "$$ROOT"
+    - "$unwind":
+        path: "$obj"
+    - "$group":
+        _id: "$obj.k"
+        sum:
+          "$sum": "$obj.k"
+    - "$match":
+        _id:
+          "$ne":
+            _var: categoryX
+    - "$sort":
+        sum: -1
+    - "$project":
+        _id: 0
+        type: LineSeries
+        name: "$_id"
+        dataFields:
+          valueY: "$_id"
+          categoryX:
+            _var: categoryX
