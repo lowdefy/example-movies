@@ -84,7 +84,7 @@ blocks:
         label:
           title: Comment
       - name: comment_post_button
-        type: button_input
+        type: button
         label:
           title: Post
         actions:

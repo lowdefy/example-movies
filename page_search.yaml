@@ -57,7 +57,7 @@ blocks:
         box:
           width: 16
       - name: search_button
-        type: button_input
+        type: button
         box:
           width: 4
         label:
@@ -72,7 +72,7 @@ blocks:
                 results:
                   _request: req_search
       - name: reset_button
-        type: button_input
+        type: button
         box:
           width: 4
         label:
@@ -102,7 +102,7 @@ blocks:
                     {{ plot }}
                     ##### Likes: {{ likes }}
           - name: results.$.like_button
-            type: button_input
+            type: button
             label:
               title: Like
             box:
@@ -123,7 +123,7 @@ blocks:
                           - _state: results.$.likes
                           - 1
           - name: results.$.view_button
-            type: button_input
+            type: button
             label:
               title: View Details
             box:
