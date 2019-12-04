@@ -1,4 +1,4 @@
-name: genre_by_decade_card
+name: card_genre_by_decade
 type: card
 label:
   title: Number of Movies by Genre over Time

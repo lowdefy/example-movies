@@ -1,4 +1,4 @@
-name: genre_by_decade_stacked_card
+name: card_genre_by_decade_stacked
 type: card
 label:
   title: Percent of Movies by Genre over Time

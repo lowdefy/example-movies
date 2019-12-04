@@ -1,0 +1,17 @@
+name: req_tomatoes_viewer_vs_critic_lookup
+type: mongodb_aggregation
+connectionId: mongodb_mflix_movies
+properties:
+  pipeline:
+    - $match:
+        _id:
+          $in:
+            _state: tomatoes_viewer_vs_critic.selectedMovieIds
+    - $project:
+        title: 1
+        viewer_meter: $tomatoes.viewer.meter
+        critic_meter: $tomatoes.critic.meter
+        viewer_reviews: $tomatoes.viewer.numReviews
+        year: 1
+    - $sort:
+        title: 1
