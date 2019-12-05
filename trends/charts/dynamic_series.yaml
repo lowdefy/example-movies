@@ -11,7 +11,7 @@ _mql_aggregate:
     - "$group":
         _id: "$obj.k"
         sum:
-          "$sum": "$obj.k"
+          "$sum": "$obj.v"
     - "$match":
         _id:
           "$ne":
@@ -22,7 +22,20 @@ _mql_aggregate:
         _id: 0
         type: LineSeries
         name: "$_id"
+        stacked:
+          "$literal":
+            _var: stacked
+        fillOpacity:
+          "$literal":
+            _var: fillOpacity
+        tooltipText:
+          _var: tooltipText
+        legendSettings:
+          itemValueText:
+            _var: legendItemValueText
         dataFields:
           valueY: "$_id"
+          valueYShow:
+            _var: valueYShow
           categoryX:
             _var: categoryX

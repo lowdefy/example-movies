@@ -3,48 +3,75 @@ type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
 properties:
   pipeline:
-    - "$match":
+    - $match:
         type: movie
-    - "$match":
-        "$expr":
-          "$and":
-            - "$gte":
+    - $match:
+        $expr:
+          $and:
+            - $gte:
                 - "$year"
                 - _state: filter_start_decade
-            - "$lt":
+            - $lt:
                 - "$year"
                 - "$add":
                     - _state: filter_end_decade
                     - 10
-    - "$unwind":
-        path: "$genres"
-    - "$group":
-        _id:
-          decade:
-            "$subtract":
-              - "$year"
-              - "$mod":
-                  - "$year"
-                  - 10
-          genre: "$genres"
-        count:
-          "$sum": 1
-    - "$group":
-        _id:
-          "$concat":
-            - "$toString": "$_id.decade"
-            - "'s"
-        count_genres:
-          "$push":
-            k: "$_id.genre"
-            v: "$count"
-    - "$replaceRoot":
-        newRoot:
-          "$arrayToObject":
-            - "$concatArrays":
-                - - k: decade
-                    v: "$_id"
-                - $count_genres
 
-    - "$sort":
+    - $unwind:
+        path: $genres
+    - $facet:
+        decades:
+          - $group:
+              _id:
+                decade:
+                  $subtract:
+                    - $year
+                    - $mod:
+                        - $year
+                        - 10
+                genre: $genres
+              count:
+                $sum: 1
+        genres:
+          - $group:
+              _id: $genres
+    - $unwind:
+        path: $decades
+    - $group:
+        _id: $decades._id.decade
+        count_genres:
+          $push:
+            k: $decades._id.genre
+            v: $decades.count
+        genres:
+          $first: $genres
+    - $project:
+        count_genres:
+          $map:
+            input: $genres
+            in:
+              $let:
+                vars:
+                  index:
+                    $indexOfArray:
+                      - $count_genres.k
+                      - $$this._id
+                in:
+                  $cond:
+                    - $eq:
+                        - $$index
+                        - -1
+                    - k: $$this._id
+                      v: 0
+                    - $arrayElemAt:
+                        - $count_genres
+                        - $$index
+    - $replaceRoot:
+        newRoot:
+          $arrayToObject:
+            - $concatArrays:
+                - - k: decade
+                    v: $_id
+                - $count_genres
+    - $sort:
         decade: 1

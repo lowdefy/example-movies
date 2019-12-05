@@ -1,0 +1,107 @@
+name: card_tomatoes_viewer_vs_critic
+type: card
+label:
+  title: Rotten Tomatoes Viewer vs Critic Meters
+blocks:
+  - name: chart_tomatoes_viewer_vs_critic
+    type: amcharts_4_xy
+    box:
+      height: 11
+    actions:
+      onClick:
+        - set():
+            tomatoes_viewer_vs_critic.selected: true
+            tomatoes_viewer_vs_critic.selectedMovieIds:
+              _args: target.dataItem.movieIds
+        - refresh(): req_tomatoes_viewer_vs_critic_lookup
+    properties:
+      data:
+        _request: req_tomatoes_viewer_vs_critic
+      xAxes:
+        - type: ValueAxis
+          min: 0
+          max: 100
+          strictMinMax: true
+          cursorTooltipEnabled: false
+          title:
+            text: Critics Meter
+      yAxes:
+        - type: ValueAxis
+          min: 0
+          max: 100
+          strictMinMax: true
+          cursorTooltipEnabled: false
+          title:
+            text: Viewer Meter
+      series:
+        - type: LineSeries
+          dataFields:
+            valueX: critic_meter
+            valueY: viewer_meter
+            bulletSize: bulletSize
+            movieIds: _ids
+          tooltipText: "Click Me"
+          strokeOpacity: 0
+          bullets:
+            - type: Circle
+              radius: 5
+              events:
+                hit:
+                  _amcharts_4_event_listener:
+                    name: onClick
+                    argKeys:
+                      - target.dataItem.movieIds
+              adapter:
+                radius:
+                  _amcharts_4_adapter:
+                    name: getFromDataItem
+                    properties:
+                      key: bulletSize
+      cursor:
+        type: XYCursor
+        lineX:
+          disabled: true
+        lineY:
+          disabled: true
+      numberFormatter:
+        numberFormat: "#."
+  - name: modal_tomatoes_viewer_vs_critic_lookup
+    type: modal
+    visible:
+      _state: tomatoes_viewer_vs_critic.selected
+    label:
+      title: Rotten Tomatoes Viewer vs Critic Meters
+    properties:
+      width: 800
+    actions:
+      onOk:
+        - set():
+            tomatoes_viewer_vs_critic.selected: false
+            tomatoes_viewer_vs_critic.selectedMovieIds: []
+      onCancel:
+        - set():
+            tomatoes_viewer_vs_critic.selected: false
+            tomatoes_viewer_vs_critic.selectedMovieIds: []
+    blocks:
+      - name: table_tomatoes_viewer_vs_critic_lookup
+        type: ag_grid
+
+        properties:
+          rowData:
+            _request: req_tomatoes_viewer_vs_critic_lookup
+          columnDefs:
+            - headerName: Title
+              field: title
+              width: 300
+            - headerName: Year
+              field: year
+              width: 100
+            - headerName: Viewer Reviews
+              field: viewer_reviews
+              width: 100
+            - headerName: Critic Meter
+              field: critic_meter
+              width: 100
+            - headerName: Viewer Meter
+              field: viewer_meter
+              width: 100
