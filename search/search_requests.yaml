@@ -1,0 +1,67 @@
+- name: req_total
+  type: mongodb_aggregation
+  connectionId: mongodb_mflix_movies
+  properties:
+    pipeline:
+      - $match:
+          $text:
+            $search:
+              _nunjucks: "{{ search }}"
+      - $count: total
+- name: req_search
+  type: mongodb_aggregation
+  connectionId: mongodb_mflix_movies
+  watch:
+    - sort_by
+  properties:
+    pipeline:
+      - $match:
+          $text:
+            $search:
+              _nunjucks: "{{ search }}"
+      - $addFields:
+          sortBy:
+            _nunjucks: "{{ sort_by }}"
+          imdb_votes:
+            $divide:
+              - $cond:
+                  - $eq:
+                      - $type: $imdb.votes
+                      - int
+                  - $imdb.votes
+                  - 0
+              - 20000
+          textScore:
+            $meta: textScore
+      - $addFields:
+          sortValue:
+            $avg:
+              - $textScore
+              - $textScore
+              - $textScore
+              - $imdb_votes
+      - $sort:
+          sortValue: -1
+      - $skip:
+          _state: page.skip
+      - $limit:
+          _state: page.pageSize
+      - $project:
+          imdb: 1
+          tomatoes: 1
+          awards: 1
+          plot: 1
+          title: 1
+          poster: 1
+          year: 1
+          genres: 1
+          likes:
+            $ifNull:
+              - $likes
+              - 0
+          liked_by_user:
+            $in:
+              - _user: id
+              - $ifNull:
+                  - $liked_by
+                  - []
