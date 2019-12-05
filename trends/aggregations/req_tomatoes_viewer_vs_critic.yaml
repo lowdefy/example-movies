@@ -1,0 +1,42 @@
+name: req_tomatoes_viewer_vs_critic
+type: mongodb_aggregation
+connectionId: mongodb_mflix_movies
+properties:
+  pipeline:
+    - $match:
+        tomatoes.viewer.meter:
+          $exists: true
+        tomatoes.critic.meter:
+          $exists: true
+        tomatoes.viewer.numReviews:
+          $gte: 100000
+    - $group:
+        _id:
+          viewer_meter:
+            $subtract:
+              - $tomatoes.viewer.meter
+              - $mod:
+                  - $tomatoes.viewer.meter
+                  - 10
+          critic_meter:
+            $subtract:
+              - $tomatoes.critic.meter
+              - $mod:
+                  - $tomatoes.critic.meter
+                  - 10
+        count:
+          $sum: 1
+        _ids:
+          $push: $_id
+    - $project:
+        _id: 0
+        viewer_meter: $_id.viewer_meter
+        critic_meter: $_id.critic_meter
+        count: 1
+        bulletSize:
+          $max:
+            - 5
+            - $min:
+                - $count
+                - 15
+        _ids: 1
