@@ -143,7 +143,6 @@ blocks:
             - headerName: Viewer Reviews
               field: viewer_reviews
               width: 100
-              sortable: false
             - headerName: Critic Meter
               field: critic_meter
               width: 100
