@@ -1,0 +1,26 @@
+name: card_statistics_total_movies
+type: card
+box:
+  width: 8
+blocks:
+  - name: statistic_total_movies_title
+    type: markdown
+    properties:
+      content: '### Dataset'
+  - name: statistic_total_movies
+    type: statistic
+    box:
+      height: 2
+    properties:
+      title: Count
+      value:
+        _get:
+          key: 0.total
+          on:
+            _request: req_total_statistics
+      precision: 0
+      groupSeparator: ' '
+      suffix: movies
+      valueStyle:
+        fontWeight: bold
+        fontSize: 44

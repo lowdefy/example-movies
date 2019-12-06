@@ -1,0 +1,57 @@
+name: card_statistics_imdb
+type: card
+box:
+  width: 9
+blocks:
+  - name: statistic_imdb_title
+    type: markdown
+    properties:
+      content: '### IMDb Ratings'
+  - name: statistic_imdb_max
+    type: statistic
+    box:
+      width: 8
+    properties:
+      title: Max
+      value:
+        _get:
+          key: 0.max_imdb_rating
+          on:
+            _request: req_total_statistics
+      precision: 1
+      valueStyle:
+        fontWeight: bold
+        fontSize: 40
+      suffixIcon: star
+  - name: statistic_imdb_min
+    type: statistic
+    box:
+      width: 8
+    properties:
+      title: Min
+      value:
+        _get:
+          key: 0.min_imdb_rating
+          on:
+            _request: req_total_statistics
+      precision: 1
+      valueStyle:
+        fontWeight: bold
+        fontSize: 40
+      suffixIcon: star
+  - name: statistic_imdb_avg
+    type: statistic
+    box:
+      width: 8
+    properties:
+      title: Average
+      value:
+        _get:
+          key: 0.avg_imdb_rating
+          on:
+            _request: req_total_statistics
+      precision: 1
+      valueStyle:
+        fontWeight: bold
+        fontSize: 40
+      suffixIcon: star

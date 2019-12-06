@@ -40,11 +40,10 @@ blocks:
             valueY: viewer_meter
             bulletSize: bulletSize
             movieIds: _ids
-          tooltipText: "Click Me"
+          tooltipText: 'Click Me'
           strokeOpacity: 0
           bullets:
             - type: Circle
-              radius: 5
               events:
                 hit:
                   _amcharts_4_event_listener:
@@ -54,9 +53,9 @@ blocks:
               adapter:
                 radius:
                   _amcharts_4_adapter:
-                    name: getFromDataItem
+                    name: getFromTarget
                     properties:
-                      key: bulletSize
+                      key: dataItem.bulletSize
       cursor:
         type: XYCursor
         lineX:
@@ -64,7 +63,7 @@ blocks:
         lineY:
           disabled: true
       numberFormatter:
-        numberFormat: "#."
+        numberFormat: '#.'
   - name: modal_tomatoes_viewer_vs_critic_lookup
     type: modal
     visible:
@@ -93,15 +92,20 @@ blocks:
             - headerName: Title
               field: title
               width: 300
+              resizable: true
+              filter: true
             - headerName: Year
               field: year
               width: 100
             - headerName: Viewer Reviews
               field: viewer_reviews
               width: 100
+              sortable: false
             - headerName: Critic Meter
               field: critic_meter
               width: 100
             - headerName: Viewer Meter
               field: viewer_meter
               width: 100
+          defaultColDef:
+            sortable: true
