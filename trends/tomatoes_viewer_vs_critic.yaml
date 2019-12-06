@@ -1,7 +1,7 @@
 name: card_tomatoes_viewer_vs_critic
 type: card
 blocks:
-  - name: spacer_1_tomatoes_viewer_vs_critic
+  - name: spacer_tomatoes_viewer_vs_critic
     type: column
     box:
       width: 4
@@ -26,7 +26,7 @@ blocks:
           strictMinMax: true
           cursorTooltipEnabled: false
           title:
-            text: Critics Meter
+            text: Critics (Tomatometer®)
       yAxes:
         - type: ValueAxis
           min: 0
@@ -34,8 +34,18 @@ blocks:
           strictMinMax: true
           cursorTooltipEnabled: false
           title:
-            text: Viewer Meter
+            text: Audience Score
       series:
+        - type: LineSeries
+          data:
+            - x: 0
+              y: 0
+            - x: 100
+              y: 100
+          dataFields:
+            valueX: x
+            valueY: y
+          stroke: "#aaa"
         - type: LineSeries
           dataFields:
             valueX: critic_meter
@@ -50,7 +60,7 @@ blocks:
               target: bullets.template
           bullets:
             - type: Circle
-              tooltipText: "Critics: {valueX}\nViewers: {valueY}\nNum movies: {value}\nClick me for more"
+              tooltipText: "Critics: {valueX}\nAudience: {valueY}\nNum movies: {value}\nClick me for more"
               states:
                 hover:
                   properties:
@@ -88,15 +98,15 @@ blocks:
           disabled: true
       numberFormatter:
         numberFormat: "#."
-  - name: markdown_tomatoes_viewer_vs_critic_lookup
+  - name: markdown_tomatoes_viewer_vs_critic
     type: markdown
     properties:
       content: |
-        ### Rotten Tomatoes Viewer vs Critic Meters
+        ### Rotten Tomatoes Audience vs Critic Scores
 
         A comparison of the Rotten Tomatoes® Tomatometer® score (the percentage of professional critic reviews that are positive) with the Rotten Tomatoes® Audience Score (the percentage of viewers confirmed to have bought tickets and who rated it 3.5 stars or higher). Only movies with more than 100 000 audience reviews were considered 
 
-        In general, the score given by audience members tends to be higher than the critic score. Click on the bubbles to see which movies are part of that bubble.
+        In general, the score given by audience members tends to be higher than the critic score. This can be seen since most points lie above the diagonal line, which is the line where both scores are equal. Click on the bubbles to see which movies are part of that bubble.
   - name: modal_tomatoes_viewer_vs_critic_lookup
     type: modal
     visible:

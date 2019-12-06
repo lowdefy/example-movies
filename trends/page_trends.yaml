@@ -7,79 +7,13 @@ initialState:
   tomatoes_viewer_vs_critic:
     selected: false
     selectedMovieIds: []
-  filter_start_decade: 1910
-  filter_end_decade: 2000
 
 requests:
-  # - _ref: trends/aggregations/req_filter_start_decade.yaml
-  # - _ref: trends/aggregations/req_filter_end_decade.yaml
   - _ref: trends/aggregations/req_genres_by_decade.yaml
-  # - _ref: trends/aggregations/req_top_awards.yaml
   - _ref: trends/aggregations/req_tomatoes_viewer_vs_critic.yaml
   - _ref: trends/aggregations/req_tomatoes_viewer_vs_critic_lookup.yaml
+  - _ref: trends/aggregations/req_genre_heatmap.yaml
 
 blocks:
-  # - name: description_card
-  #   type: card
-  #   box:
-  #     width: 12
-  #   blocks:
-  #     - name: description_text
-  #       type: markdown
-
-  # - name: filter_card
-  #   type: card
-  #   box:
-  #     width: 12
-  #   blocks:
-  #     - name: filter_start_decade
-  #       type: select_input
-  #       label:
-  #         title: Start Decade
-  #       box:
-  #         width: 12
-  #       defaultValue: 1890
-  #       properties:
-  #         options:
-  #           _request: req_filter_start_decade
-  #     - name: filter_end_decade
-  #       type: select_input
-  #       label:
-  #         title: End Decade
-  #       box:
-  #         width: 12
-  #       defaultValue: 2000
-  #       properties:
-  #         options:
-  #           _request: req_filter_end_decade
-
-  #     - name: filter_calculate_button
-  #       type: button
-  #       label:
-  #         title: Calculate
-  #       box:
-  #         width: 12
-  #       properties:
-  #         icon: filter
-  #         size: large
-  #       actions:
-  #         onClick:
-  #           - refresh(): req_genres_by_decade
-  #     - name: filter_reset_button
-  #       type: button
-  #       label:
-  #         title: Reset
-  #       box:
-  #         width: 12
-  #       properties:
-  #         type: normal
-  #         icon: undo
-  #         size: large
-  #       actions:
-  #         onClick:
-  #           - reset(): true
-  #           - refresh(): req_genres_by_decade
-  # - _ref: trends/charts/chart_genres_by_decade.yaml
-  - _ref: trends/charts/chart_genres_by_decade_stacked.yaml
-  # - _ref: trends/charts/table_top_awards.yaml
+  - _ref: trends/genres_by_decade.yaml
   - _ref: trends/tomatoes_viewer_vs_critic.yaml

@@ -10,12 +10,10 @@ properties:
           $and:
             - $gte:
                 - "$year"
-                - _state: filter_start_decade
+                - 1910
             - $lt:
                 - "$year"
-                - "$add":
-                    - _state: filter_end_decade
-                    - 10
+                - 2010
 
     - $unwind:
         path: $genres
@@ -35,6 +33,13 @@ properties:
         genres:
           - $group:
               _id: $genres
+          - $match:
+              $and:
+                - _id:
+                    $ne: News
+                - _id:
+                    $ne: Talk-Show
+
     - $unwind:
         path: $decades
     - $group:
