@@ -9,6 +9,7 @@ initialState:
     selectedMovieIds: []
 
 requests:
+  - _ref: trends/aggregations/req_total_statistics.yaml
   - _ref: trends/aggregations/req_genres_by_decade.yaml
   - _ref: trends/aggregations/req_tomatoes_viewer_vs_critic.yaml
   - _ref: trends/aggregations/req_tomatoes_viewer_vs_critic_lookup.yaml

@@ -135,15 +135,20 @@ blocks:
             - headerName: Title
               field: title
               width: 300
+              resizable: true
+              filter: true
             - headerName: Year
               field: year
               width: 100
             - headerName: Viewer Reviews
               field: viewer_reviews
               width: 100
+              sortable: false
             - headerName: Critic Meter
               field: critic_meter
               width: 100
             - headerName: Viewer Meter
               field: viewer_meter
               width: 100
+          defaultColDef:
+            sortable: true
