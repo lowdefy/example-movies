@@ -1,0 +1,114 @@
+name: req_total_statistics
+type: mongodb_aggregation
+connectionId: mongodb_mflix_movies
+properties:
+  pipeline:
+    - $match:
+        type: movie
+    - $group:
+        _id: 0
+        total:
+          $sum: 1
+        avg_metacritic_score:
+          $avg: $metacritic
+        max_metacritic_score:
+          $max: $metacritic
+        min_metacritic_score:
+          $min: $metacritic
+        avg_imdb_rating:
+          $avg: $imdb.rating
+        max_imdb_rating:
+          $max:
+            $cond:
+              - $eq:
+                  - $type: $imdb.rating
+                  - string
+              - null
+              - $imdb.rating
+        min_imdb_rating:
+          $min: $imdb.rating
+        total_imdb_votes:
+          $sum: $imdb.votes
+        avg_imdb_votes:
+          $avg: $imdb.votes
+        avg_tomatoes_viewer_meter:
+          $avg: $tomatoes.viewer.meter
+        max_tomatoes_viewer_meter:
+          $max: $tomatoes.viewer.meter
+        min_tomatoes_viewer_meter:
+          $min: $tomatoes.viewer.meter
+        avg_tomatoes_viewer_votes:
+          $avg: $tomatoes.viewer.numReviews
+        avg_tomatoes_critic_meter:
+          $avg: $tomatoes.critic.meter
+        max_tomatoes_critic_meter:
+          $max: $tomatoes.critic.meter
+        min_tomatoes_critic_meter:
+          $min: $tomatoes.critic.meter
+        avg_tomatoes_critic_votes:
+          $avg: $tomatoes.critic.numReviews
+        total_runtime:
+          $sum: $runtime
+        avg_runtime:
+          $avg: $runtime
+        min_runtime:
+          $min: $runtime
+        max_runtime:
+          $max: $runtime
+    - $addFields:
+        total_runtime_years:
+          $divide:
+            - $total_runtime
+            - $multiply:
+                - 60
+                - 24
+                - 365
+        total_runtime_ms:
+          $multiply:
+            - $total_runtime
+            - 60
+            - 1000
+        total_runtime_days:
+          $trunc:
+            $divide:
+              - $total_runtime
+              - $multiply:
+                  - 60
+                  - 24
+        total_runtime_hours:
+          $trunc:
+            $mod:
+              - $total_runtime
+              - 24
+        total_runtime_minutes:
+          $mod:
+            - $total_runtime
+            - 60
+        max_runtime_ms:
+          $multiply:
+            - $max_runtime
+            - 60
+            - 1000
+        max_runtime_hours:
+          $trunc:
+            $divide:
+              - $max_runtime
+              - 60
+        max_runtime_minutes:
+          $mod:
+            - $max_runtime
+            - 60
+        avg_runtime_ms:
+          $multiply:
+            - $avg_runtime
+            - 60
+            - 1000
+        avg_runtime_hours:
+          $trunc:
+            $divide:
+              - $avg_runtime
+              - 60
+        avg_runtime_minutes:
+          $mod:
+            - $avg_runtime
+            - 60

@@ -1,0 +1,41 @@
+name: card_statistics_tomatoes
+type: card
+box:
+  width: 9
+blocks:
+  - name: statistic_tomatoes_title
+    type: markdown
+    properties:
+      content: '### Rotten Tomatoes'
+  - name: statistic_tomatoes_viewer_avg
+    type: statistic
+    box:
+      width: 12
+    properties:
+      title: Average Audience Score
+      value:
+        _get:
+          key: 0.avg_tomatoes_viewer_meter
+          on:
+            _request: req_total_statistics
+      precision: 0
+      valueStyle:
+        fontWeight: bold
+        fontSize: 40
+      suffix: '%'
+  - name: statistic_tomatoes_critic_avg
+    type: statistic
+    box:
+      width: 12
+    properties:
+      title: Average Tomatometer®
+      value:
+        _get:
+          key: 0.avg_tomatoes_critic_meter
+          on:
+            _request: req_total_statistics
+      precision: 0
+      valueStyle:
+        fontWeight: bold
+        fontSize: 40
+      suffix: '%'
