@@ -1,6 +1,8 @@
 id: page3
 properties:
   title: Movie Trends
+box:
+  width: 24
 initialState:
   tomatoes_viewer_vs_critic:
     selected: false

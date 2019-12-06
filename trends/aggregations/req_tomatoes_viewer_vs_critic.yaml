@@ -33,10 +33,4 @@ properties:
         viewer_meter: $_id.viewer_meter
         critic_meter: $_id.critic_meter
         count: 1
-        bulletSize:
-          $max:
-            - 5
-            - $min:
-                - $count
-                - 15
         _ids: 1

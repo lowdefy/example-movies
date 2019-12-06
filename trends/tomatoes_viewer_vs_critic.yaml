@@ -1,12 +1,14 @@
 name: card_tomatoes_viewer_vs_critic
 type: card
-label:
-  title: Rotten Tomatoes Viewer vs Critic Meters
 blocks:
+  - name: spacer_1_tomatoes_viewer_vs_critic
+    type: column
+    box:
+      width: 4
   - name: chart_tomatoes_viewer_vs_critic
     type: amcharts_4_xy
     box:
-      height: 11
+      width: 16
     actions:
       onClick:
         - set():
@@ -38,25 +40,46 @@ blocks:
           dataFields:
             valueX: critic_meter
             valueY: viewer_meter
-            bulletSize: bulletSize
             movieIds: _ids
-          tooltipText: "Click Me"
+            value: count
           strokeOpacity: 0
+          heatRules:
+            - min: 3
+              max: 40
+              property: radius
+              target: bullets.template
           bullets:
             - type: Circle
-              radius: 5
+              tooltipText: "Critics: {valueX}\nViewers: {valueY}\nNum movies: {value}\nClick me for more"
+              states:
+                hover:
+                  properties:
+                    scale: 1.2
+              strokeOpacity: 0
+              adapter:
+                fill:
+                  _amcharts_4_adapter:
+                    type: inline_js
+                    properties:
+                      function: |
+                        function fillAdapter(original, target, key) {
+                          if (target.dataItem) {
+                            const { valueX, valueY } = target.dataItem;
+                            const avg = (valueX + valueY) / 200;
+                            const dist = Math.min(Math.abs(valueX - valueY) / Math.SQRT2, 50);
+                            const r = Math.trunc(15 * avg);
+                            const g = Math.trunc(15 * (1 - avg));
+                            const b = Math.trunc(0.3 * dist);
+                            return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+                          }
+                          return original;
+                        }
               events:
                 hit:
                   _amcharts_4_event_listener:
                     name: onClick
                     argKeys:
                       - target.dataItem.movieIds
-              adapter:
-                radius:
-                  _amcharts_4_adapter:
-                    name: getFromDataItem
-                    properties:
-                      key: bulletSize
       cursor:
         type: XYCursor
         lineX:
@@ -65,6 +88,15 @@ blocks:
           disabled: true
       numberFormatter:
         numberFormat: "#."
+  - name: markdown_tomatoes_viewer_vs_critic_lookup
+    type: markdown
+    properties:
+      content: |
+        ### Rotten Tomatoes Viewer vs Critic Meters
+
+        A comparison of the Rotten Tomatoes® Tomatometer® score (the percentage of professional critic reviews that are positive) with the Rotten Tomatoes® Audience Score (the percentage of viewers confirmed to have bought tickets and who rated it 3.5 stars or higher). Only movies with more than 100 000 audience reviews were considered 
+
+        In general, the score given by audience members tends to be higher than the critic score. Click on the bubbles to see which movies are part of that bubble.
   - name: modal_tomatoes_viewer_vs_critic_lookup
     type: modal
     visible:
