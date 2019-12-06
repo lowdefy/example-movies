@@ -17,3 +17,4 @@ requests:
 blocks:
   - _ref: trends/genres_by_decade.yaml
   - _ref: trends/tomatoes_viewer_vs_critic.yaml
+  - _ref: trends/genre_heatmap.yaml

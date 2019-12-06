@@ -1,0 +1,68 @@
+name: req_genre_heatmap
+type: mongodb_aggregation
+connectionId: mongodb_mflix_movies
+properties:
+  pipeline:
+    - $match:
+        type: movie
+    - $group:
+        _id: $genres
+        c:
+          $sum: 1
+    - $match:
+        _id:
+          $ne: null
+    - $facet:
+        genres:
+          - $unwind:
+              path: $_id
+          - $group:
+              _id: $_id
+          - $match:
+              $and:
+                - _id:
+                    $ne: News
+                - _id:
+                    $ne: Talk-Show
+        counts:
+          - $match:
+              $expr:
+                $gt:
+                  - $size: $_id
+                  - 1
+    - $project:
+        x: $genres._id
+        "y": $genres._id
+        counts: 1
+    - $unwind:
+        path: $x
+    - $unwind:
+        path: $y
+    - $match:
+        $expr:
+          $ne:
+            - $x
+            - $y
+    - $project:
+        x: 1
+        "y": 1
+        count:
+          $reduce:
+            input: $counts
+            initialValue: 0
+            in:
+              $cond:
+                - $and:
+                    - $in:
+                        - $x
+                        - $$this._id
+                    - $in:
+                        - $y
+                        - $$this._id
+                - $add:
+                    - $$value
+                    - $$this.c
+                - $$value
+    - $sort:
+        x: 1
+        "y": 1
