@@ -1,10 +1,10 @@
 name: card_genre_by_decade_stacked
 type: card
-label:
-  title: Percent of Movies by Genre over Time
 blocks:
-  - name: chart_genres_by_decade_stacked
+  - name: chart_genres_by_decade
     type: amcharts_4_xy
+    box:
+      height: 12
     properties:
       data:
         _request: req_genres_by_decade
@@ -27,15 +27,14 @@ blocks:
             text: Percent of Movies Made
       series:
         _ref:
-          path: trends/charts/dynamic_series.yaml
+          path: trends/dynamic_series.yaml
           vars:
             requestName: req_genres_by_decade
             categoryX: decade
             valueYShow: totalPercent
             stacked: true
             fillOpacity: 1
-            legendItemValueText: "{valueY.totalPercent}"
-            tooltipText: "{name}"
+            legendItemValueText: "{valueY.totalPercent} %"
       legend:
         type: Legend
       cursor:
@@ -44,3 +43,17 @@ blocks:
           disabled: true
       numberFormatter:
         numberFormat: "#."
+  - name: markdown_genres_by_decade
+    type: markdown
+    properties:
+      content: |
+        ### Genre Ratio by Decade
+
+        ##### Steady
+        Drama, Comedy, Adventure, Biography, Fantasy, Music, Sport
+
+        ##### Decreased (peak in brackets)
+        Romance (1930), Horror (1980), Family (1920), Sci-Fi (1980), War (1940), Musical (1930), Western (1910, 1920, 1960), Film Noir (1940), Short (1910)
+
+        ##### Increased
+        Crime, Thriller, Action, Documentary, Mystery, Animation

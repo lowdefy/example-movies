@@ -1,0 +1,42 @@
+name: card_genre_heatmap
+type: card
+blocks:
+  - name: spacer_genre_heatmap
+    type: column
+    box:
+      width: 4
+  - name: chart_genre_heatmap
+    type: amcharts_4_xy
+    box:
+      width: 16
+    properties:
+      data:
+        _request: req_genre_heatmap
+      xAxes:
+        - type: CategoryAxis
+          dataFields:
+            category: x
+      yAxes:
+        - type: CategoryAxis
+          dataFields:
+            category: "y"
+      series:
+        - type: ColumnSeries
+          heatRules:
+            - min: "#fff"
+              max: "#311b92"
+              property: fill
+              target: columns.template
+          dataFields:
+            categoryX: x
+            categoryY: "y"
+            value: count
+          columns:
+            strokeOpacity: 0
+            tooltipText: "{categoryX} - {categoryY}"
+      cursor:
+        type: XYCursor
+  - name: markdown_genre_heatmap
+    type: markdown
+    properties:
+      content: "### Genre Heatmap"
