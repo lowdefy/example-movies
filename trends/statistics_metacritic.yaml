@@ -1,0 +1,22 @@
+name: card_statistics_metacritic
+type: card
+box:
+  width: 6
+blocks:
+  - name: statistic_metacritic_title
+    type: markdown
+    properties:
+      content: '### Metacritic Scores'
+  - name: statistic_metacritic_avg
+    type: statistic
+    properties:
+      title: Average
+      value:
+        _get:
+          key: 0.avg_metacritic_score
+          on:
+            _request: req_total_statistics
+      precision: 0
+      valueStyle:
+        fontWeight: bold
+        fontSize: 40
