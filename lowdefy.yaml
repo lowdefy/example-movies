@@ -34,6 +34,6 @@ layout:
           title: Trends
           icon: area-chart
 pages:
-  - _ref: page_search.yaml
-  - _ref: page_details.yaml
+  - _ref: search/page_search.yaml
+  - _ref: details/page_details.yaml
   - _ref: trends/page_trends.yaml

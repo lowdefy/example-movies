@@ -1,0 +1,120 @@
+id: page2
+properties:
+  title: Movie Details 🎬
+initialState:
+  _id:
+    _input: _id
+  details:
+    _request: req_movie_details
+  comments:
+    _request: req_movie_comments
+requests:
+  - name: req_movie_details
+    type: mongodb_find_one
+    connectionId: mongodb_mflix_movies
+    properties:
+      query:
+        _id:
+          _input: _id
+  - name: req_movie_comments
+    type: mongodb_aggregation
+    connectionId: mongodb_mflix_comments
+    properties:
+      pipeline:
+        - $match:
+            movie_id:
+              _input: _id
+        - $sort:
+            date: -1
+        - $limit: 10
+
+mutations:
+  - name: mutation_post_comment
+    type: mongodb_insert_one
+    connectionId: mongodb_mflix_comments
+    properties:
+      doc:
+        movie_id:
+          _state: _id
+        name:
+          _user: fullName
+        user_id:
+          _user: id
+        text:
+          _state: comment_input
+        date:
+          _date: now
+
+blocks:
+  - name: details_card
+    type: card
+    box:
+      minHeight: 24
+    blocks:
+      - name: details_markdown
+        type: markdown
+        properties:
+          content:
+            _nunjucks: |
+              {% if _id %}
+              # {{ details.title }}
+              <div style="height: 400px" >
+                <img style="max-width: 100%; max-height: 100%; display:block; margin:auto;" src="{{ details.poster }}" alt="poster">
+              </div>
+
+              {{ details.fullplot }}
+
+              ### Cast
+              {% for actor in details.cast %}
+              - {{ actor }}
+              {% endfor %}
+
+              ### Directors
+              {% for director in details.directors %}
+              - {{ director }}
+              {% endfor %}
+
+              ### Writers
+              {% for writer in details.writers %}
+              - {{ writer }}
+              {% endfor %}
+              {% endif %}
+      - name: comment_input
+        type: text_input
+        label:
+          title: Comment
+      - name: comment_post_button
+        type: button
+        label:
+          title: Post
+        actions:
+          onClick:
+            - mutate(): mutation_post_comment
+            - set():
+                comments:
+                  _mql_expr:
+                    $concatArrays:
+                      - - name:
+                            _user: fullName
+                          text:
+                            _state: comment_input
+                          date:
+                            _date: now
+                      - _state: comments
+      - name: comments
+        type: list
+        properties:
+          hideAddButton: true
+          hideRemoveButton: true
+        blocks:
+          - name: comments.$.markdown
+            type: markdown
+            properties:
+              content:
+                _nunjucks:
+                  on:
+                    _state: comments.$
+                  template: |
+                    ### {{ name }}
+                    {{ text }}
+                    {{ date | date('D MMM, YYYY') }}
