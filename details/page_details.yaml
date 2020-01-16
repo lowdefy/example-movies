@@ -1,4 +1,4 @@
-id: page2
+id: page_details
 properties:
   title: Movie Details 🎬
 initialState:

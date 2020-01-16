@@ -23,16 +23,17 @@ layout:
     links:
       - id: menu_search
         type: menu_link
-        pageId: page1
+        pageId: page_search
         properties:
           title: Movie Lookup
           icon: search
       - id: menu_trends
         type: menu_link
-        pageId: page3
+        pageId: page_trends
         properties:
           title: Trends
           icon: area-chart
+
 pages:
   - _ref: search/page_search.yaml
   - _ref: details/page_details.yaml
