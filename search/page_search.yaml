@@ -54,7 +54,7 @@ blocks:
           width: { md: 24, lg: 16 }
         properties:
           size: large
-          placeholder: Did you come here looking for 🤩?
+          placeholder: What did you come here looking for? 🤩
       - id: search_button
         type: button
         box:

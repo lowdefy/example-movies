@@ -6,7 +6,7 @@ blocks:
   - id: statistic_total_movies_title
     type: markdown
     properties:
-      content: '### Dataset'
+      content: '### Dataset Size'
   - id: statistic_total_movies
     type: statistic
     box:
@@ -19,7 +19,7 @@ blocks:
           on:
             _request: req_total_statistics
       precision: 0
-      groupSeparator: ' '
+      groupSeparator: " "
       suffix: movies
       valueStyle:
         fontWeight: bold

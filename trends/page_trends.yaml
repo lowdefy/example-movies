@@ -16,6 +16,11 @@ requests:
   - _ref: trends/aggregations/req_genre_heatmap.yaml
 
 blocks:
+  - _ref: trends/statistics_imdb.yaml
+  - _ref: trends/statistics_tomatoes.yaml
+  - _ref: trends/statistics_metacritic.yaml
+  - _ref: trends/statistics_total_movies.yaml
+  - _ref: trends/statistics_runtime.yaml
   - _ref: trends/genres_by_decade.yaml
   - _ref: trends/tomatoes_viewer_vs_critic.yaml
   - _ref: trends/genre_heatmap.yaml
