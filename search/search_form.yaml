@@ -1,0 +1,48 @@
+id: form_container
+type: column
+blocks:
+  - id: search_input
+    type: text_input
+    label:
+      title: ""
+    box:
+      width: { md: 24, lg: 16 }
+    properties:
+      size: large
+      placeholder: What did you come here looking for? 🤩
+  - id: search_button
+    type: button
+    box:
+      width: { xs: 12, sm: 14, md: 16, lg: 5 }
+    label:
+      title: Search
+    properties:
+      keyCode: 13
+      icon: search
+      size: large
+    actions:
+      onClick:
+        - set():
+            loading: true
+            search:
+              _state: search_input
+            page.page: 1
+            page.skip: 0
+        - refresh(): true
+        - set():
+            loading: false
+            results:
+              _request: req_search
+  - id: reset_button
+    type: button
+    box:
+      width: { xs: 12, sm: 10, md: 8, lg: 3 }
+    label:
+      title: Reset
+    properties:
+      type: default
+      icon: reload
+      size: large
+    actions:
+      onClick:
+        - reset(): true

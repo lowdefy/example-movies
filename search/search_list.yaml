@@ -4,17 +4,17 @@ properties:
   hideAddButton: true
   hideRemoveButton: true
 blocks:
-  # - id: results.$.skeleton
-  #   type: skeleton
-  #   properties:
-  #     active: true
-  #     avatar:
-  #       size: 200
-  #       shape: square
-  #     paragraph:
-  #       rows: 4
-  #   visible:
-  #     _state: loading
+  - id: results.$.skeleton
+    type: skeleton
+    properties:
+      active: true
+      avatar:
+        size: 200
+        shape: square
+      paragraph:
+        rows: 4
+    visible:
+      _state: loading
   - id: results.$.item
     type: column
     visible:
@@ -106,8 +106,8 @@ blocks:
             actions:
               onClick:
                 - pageLink():
-                    pageId: page2
-                    input:
+                    pageId: page_details
+                    urlQuery:
                       _id:
                         _state: results.$._id
           - id: results.$.rating

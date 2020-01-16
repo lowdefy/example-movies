@@ -1,9 +1,11 @@
 id: page_details
+box:
+  width: 24
 properties:
   title: Movie Details 🎬
 initialState:
   _id:
-    _input: _id
+    _url_query: _id
   details:
     _request: req_movie_details
   comments:
@@ -15,7 +17,7 @@ requests:
     properties:
       query:
         _id:
-          _input: _id
+          _url_query: _id
   - id: req_movie_comments
     type: mongodb_aggregation
     connectionId: mongodb_mflix_comments
@@ -23,7 +25,7 @@ requests:
       pipeline:
         - $match:
             movie_id:
-              _input: _id
+              _url_query: _id
         - $sort:
             date: -1
         - $limit: 10
@@ -51,16 +53,27 @@ blocks:
     box:
       minHeight: 24
     blocks:
-      - id: details_markdown
+      - id: poster
         type: markdown
+        box:
+          width: { sm: 24, md: 8 }
+        properties:
+          content:
+            _nunjucks: |
+              {% if _id %}
+              <div style="height: 400px" >
+                <img style="max-width: 100%; max-height: 100%; display:block; margin:auto;" src="{{ details.poster }}" alt="poster">
+              </div>
+              {% endif %}
+      - id: content
+        type: markdown
+        box:
+          width: { sm: 24, md: 16 }
         properties:
           content:
             _nunjucks: |
               {% if _id %}
               # {{ details.title }}
-              <div style="height: 400px" >
-                <img style="max-width: 100%; max-height: 100%; display:block; margin:auto;" src="{{ details.poster }}" alt="poster">
-              </div>
 
               {{ details.fullplot }}
 
@@ -80,7 +93,7 @@ blocks:
               {% endfor %}
               {% endif %}
       - id: comment_input
-        type: text_input
+        type: text_area_input
         label:
           title: Comment
       - id: comment_post_button
