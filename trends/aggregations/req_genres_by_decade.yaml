@@ -1,4 +1,4 @@
-name: req_genres_by_decade
+id: req_genres_by_decade
 type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
 properties:

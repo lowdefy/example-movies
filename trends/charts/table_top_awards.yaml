@@ -1,9 +1,9 @@
-name: top_awards_card
+id: top_awards_card
 type: card
 label:
   title: Top Awards
 blocks:
-  - name: table_top_awards
+  - id: table_top_awards
     type: ag_grid
     properties:
       rowData:

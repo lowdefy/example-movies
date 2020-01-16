@@ -1,4 +1,4 @@
-name: req_filter_country
+id: req_filter_country
 type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
 watch:

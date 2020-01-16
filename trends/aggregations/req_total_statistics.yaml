@@ -1,4 +1,4 @@
-name: req_total_statistics
+id: req_total_statistics
 type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
 properties:

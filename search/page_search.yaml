@@ -4,7 +4,7 @@ properties:
 requests:
   _ref: search/search_requests.yaml
 mutations:
-  - name: mutation_like_movie
+  - id: mutation_like_movie
     type: mongodb_update_one
     connectionId: mongodb_mflix_movies
     properties:
@@ -17,7 +17,7 @@ mutations:
         $addToSet:
           liked_by:
             _user: id
-  - name: mutation_unlike_movie
+  - id: mutation_unlike_movie
     type: mongodb_update_one
     connectionId: mongodb_mflix_movies
     properties:
@@ -41,12 +41,12 @@ initialState:
     _request: req_search
 
 blocks:
-  - name: card_search
+  - id: card_search
     type: card
     label:
       title: Search for a movie or actor
     blocks:
-      - name: search_input
+      - id: search_input
         type: text_input
         label:
           title: ""
@@ -55,7 +55,7 @@ blocks:
         properties:
           size: large
           placeholder: Did you come here looking for 🤩?
-      - name: search_button
+      - id: search_button
         type: button
         box:
           width: { xs: 12, sm: 14, md: 16, lg: 5 }
@@ -78,7 +78,7 @@ blocks:
                 loading: false
                 results:
                   _request: req_search
-      - name: reset_button
+      - id: reset_button
         type: button
         box:
           width: { xs: 12, sm: 10, md: 8, lg: 3 }
@@ -92,7 +92,7 @@ blocks:
           onClick:
             - reset(): true
       - _ref: search/search_list.yaml
-      - name: page
+      - id: page
         type: pagination_input
         properties:
           showSizeChanger: true

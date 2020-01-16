@@ -21,13 +21,13 @@ layout:
   menu:
     type: header_menu
     links:
-      - name: menu_search
+      - id: menu_search
         type: menu_link
         pageId: page1
         properties:
           title: Movie Lookup
           icon: search
-      - name: menu_trends
+      - id: menu_trends
         type: menu_link
         pageId: page3
         properties:

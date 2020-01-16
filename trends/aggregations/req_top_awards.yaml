@@ -1,4 +1,4 @@
-name: req_top_awards
+id: req_top_awards
 type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
 properties:
