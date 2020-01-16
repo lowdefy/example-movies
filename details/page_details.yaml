@@ -9,14 +9,14 @@ initialState:
   comments:
     _request: req_movie_comments
 requests:
-  - name: req_movie_details
+  - id: req_movie_details
     type: mongodb_find_one
     connectionId: mongodb_mflix_movies
     properties:
       query:
         _id:
           _input: _id
-  - name: req_movie_comments
+  - id: req_movie_comments
     type: mongodb_aggregation
     connectionId: mongodb_mflix_comments
     properties:
@@ -29,14 +29,14 @@ requests:
         - $limit: 10
 
 mutations:
-  - name: mutation_post_comment
+  - id: mutation_post_comment
     type: mongodb_insert_one
     connectionId: mongodb_mflix_comments
     properties:
       doc:
         movie_id:
           _state: _id
-        name:
+        id:
           _user: fullName
         user_id:
           _user: id
@@ -46,12 +46,12 @@ mutations:
           _date: now
 
 blocks:
-  - name: details_card
+  - id: details_card
     type: card
     box:
       minHeight: 24
     blocks:
-      - name: details_markdown
+      - id: details_markdown
         type: markdown
         properties:
           content:
@@ -79,11 +79,11 @@ blocks:
               - {{ writer }}
               {% endfor %}
               {% endif %}
-      - name: comment_input
+      - id: comment_input
         type: text_input
         label:
           title: Comment
-      - name: comment_post_button
+      - id: comment_post_button
         type: button
         label:
           title: Post
@@ -101,13 +101,13 @@ blocks:
                           date:
                             _date: now
                       - _state: comments
-      - name: comments
+      - id: comments
         type: list
         properties:
           hideAddButton: true
           hideRemoveButton: true
         blocks:
-          - name: comments.$.markdown
+          - id: comments.$.markdown
             type: markdown
             properties:
               content:

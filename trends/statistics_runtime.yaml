@@ -1,13 +1,13 @@
-name: card_statistics_runtime
+id: card_statistics_runtime
 type: card
 box:
   width: 16
 blocks:
-  - name: statistic_runtime_title
+  - id: statistic_runtime_title
     type: markdown
     properties:
       content: '### Run Time'
-  - name: statistic_total_runtime_minutes
+  - id: statistic_total_runtime_minutes
     type: statistic
     box:
       width: 8
@@ -24,7 +24,7 @@ blocks:
       valueStyle:
         fontWeight: bold
         fontSize: 40
-  - name: statistic_max_runtime
+  - id: statistic_max_runtime
     type: statistic
     box:
       width: 8
@@ -40,7 +40,7 @@ blocks:
       valueStyle:
         fontWeight: bold
         fontSize: 36
-  - name: statistic_avg_runtime
+  - id: statistic_avg_runtime
     type: statistic
     box:
       width: 8

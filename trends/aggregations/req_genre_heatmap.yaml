@@ -1,4 +1,4 @@
-name: req_genre_heatmap
+id: req_genre_heatmap
 type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
 properties:

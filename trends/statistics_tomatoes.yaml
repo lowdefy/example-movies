@@ -1,13 +1,13 @@
-name: card_statistics_tomatoes
+id: card_statistics_tomatoes
 type: card
 box:
   width: 9
 blocks:
-  - name: statistic_tomatoes_title
+  - id: statistic_tomatoes_title
     type: markdown
     properties:
       content: '### Rotten Tomatoes'
-  - name: statistic_tomatoes_viewer_avg
+  - id: statistic_tomatoes_viewer_avg
     type: statistic
     box:
       width: 12
@@ -23,7 +23,7 @@ blocks:
         fontWeight: bold
         fontSize: 40
       suffix: '%'
-  - name: statistic_tomatoes_critic_avg
+  - id: statistic_tomatoes_critic_avg
     type: statistic
     box:
       width: 12

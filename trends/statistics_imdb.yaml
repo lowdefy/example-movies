@@ -1,13 +1,13 @@
-name: card_statistics_imdb
+id: card_statistics_imdb
 type: card
 box:
   width: 9
 blocks:
-  - name: statistic_imdb_title
+  - id: statistic_imdb_title
     type: markdown
     properties:
       content: '### IMDb Ratings'
-  - name: statistic_imdb_max
+  - id: statistic_imdb_max
     type: statistic
     box:
       width: 8
@@ -23,7 +23,7 @@ blocks:
         fontWeight: bold
         fontSize: 40
       suffixIcon: star
-  - name: statistic_imdb_min
+  - id: statistic_imdb_min
     type: statistic
     box:
       width: 8
@@ -39,7 +39,7 @@ blocks:
         fontWeight: bold
         fontSize: 40
       suffixIcon: star
-  - name: statistic_imdb_avg
+  - id: statistic_imdb_avg
     type: statistic
     box:
       width: 8
