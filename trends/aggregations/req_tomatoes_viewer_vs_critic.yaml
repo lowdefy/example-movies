@@ -1,4 +1,4 @@
-name: req_tomatoes_viewer_vs_critic
+id: req_tomatoes_viewer_vs_critic
 type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
 properties:

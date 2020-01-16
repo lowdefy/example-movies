@@ -2,7 +2,7 @@ id: page1
 properties:
   title: Movie Search 🔎
 requests:
-  - name: req_search
+  - id: req_search
     type: mongodb_aggregation
     connectionId: mongodb_mflix_movies
     properties:
@@ -30,7 +30,7 @@ requests:
                     - []
 
 mutations:
-  - name: mutation_like_movie
+  - id: mutation_like_movie
     type: mongodb_update_one
     connectionId: mongodb_mflix_movies
     properties:
@@ -45,18 +45,18 @@ mutations:
             _user: id
 
 blocks:
-  - name: card_search
+  - id: card_search
     type: card
     label:
       title: Search for a movie
     blocks:
-      - name: search_input
+      - id: search_input
         type: text_input
         label:
           title: ""
         box:
           width: 16
-      - name: search_button
+      - id: search_button
         type: button
         box:
           width: 4
@@ -71,7 +71,7 @@ blocks:
             - set():
                 results:
                   _request: req_search
-      - name: reset_button
+      - id: reset_button
         type: button
         box:
           width: 4
@@ -84,13 +84,13 @@ blocks:
         actions:
           onClick:
             - reset(): true
-      - name: results
+      - id: results
         type: list
         properties:
           hideAddButton: true
           hideRemoveButton: true
         blocks:
-          - name: results.$.description
+          - id: results.$.description
             type: markdown
             properties:
               content:
@@ -101,7 +101,7 @@ blocks:
                     ### {{ title }}
                     {{ plot }}
                     ##### Likes: {{ likes }}
-          - name: results.$.like_button
+          - id: results.$.like_button
             type: button
             label:
               title: Like
@@ -122,7 +122,7 @@ blocks:
                         $add:
                           - _state: results.$.likes
                           - 1
-          - name: results.$.view_button
+          - id: results.$.view_button
             type: button
             label:
               title: View Details

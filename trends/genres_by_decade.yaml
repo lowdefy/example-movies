@@ -1,7 +1,7 @@
-name: card_genre_by_decade_stacked
+id: card_genre_by_decade_stacked
 type: card
 blocks:
-  - name: chart_genres_by_decade
+  - id: chart_genres_by_decade
     type: amcharts_4_xy
     box:
       height: 12
@@ -43,7 +43,7 @@ blocks:
           disabled: true
       numberFormatter:
         numberFormat: "#."
-  - name: markdown_genres_by_decade
+  - id: markdown_genres_by_decade
     type: markdown
     properties:
       content: |

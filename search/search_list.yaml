@@ -1,27 +1,27 @@
-name: results
+id: results
 type: list
 properties:
   hideAddButton: true
   hideRemoveButton: true
 blocks:
-  - name: results.$.skeleton
-    type: skeleton
-    properties:
-      active: true
-      avatar:
-        size: 200
-        shape: square
-      paragraph:
-        rows: 4
-    visible:
-      _state: loading
-  - name: results.$.item
+  # - id: results.$.skeleton
+  #   type: skeleton
+  #   properties:
+  #     active: true
+  #     avatar:
+  #       size: 200
+  #       shape: square
+  #     paragraph:
+  #       rows: 4
+  #   visible:
+  #     _state: loading
+  - id: results.$.item
     type: column
     visible:
       _not:
         _state: loading
     blocks:
-      - name: results.$.poster
+      - id: results.$.poster
         type: markdown
         box:
           width: { sm: 8, md: 4 }
@@ -38,12 +38,12 @@ blocks:
                 {% endif %}
               on:
                 _state: results.$
-      - name: results.$.content
+      - id: results.$.content
         type: column
         box:
           width: { sm: 16, md: 20 }
         blocks:
-          - name: results.$.description
+          - id: results.$.description
             type: markdown
             properties:
               content:
@@ -56,7 +56,7 @@ blocks:
                     <span style="font-size: 12px; color: rgba(0,0,0,0.5);">| {{genre}}</span> {% endfor %}
 
                     {{ plot }}
-          - name: results.$.like_anchor
+          - id: results.$.like_anchor
             type: anchor
             label:
               title:
@@ -95,7 +95,7 @@ blocks:
                               - _state: "results.$.liked_by_user"
                               - -1
                               - 1
-          - name: results.$.view_anchor
+          - id: results.$.view_anchor
             type: anchor
             label:
               title: View Details
@@ -110,7 +110,7 @@ blocks:
                     input:
                       _id:
                         _state: results.$._id
-          - name: results.$.rating
+          - id: results.$.rating
             type: markdown
             box:
               width: { xs: 24, sm: 24, md: 16 }

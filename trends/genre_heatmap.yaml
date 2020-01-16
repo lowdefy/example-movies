@@ -1,11 +1,11 @@
-name: card_genre_heatmap
+id: card_genre_heatmap
 type: card
 blocks:
-  - name: spacer_genre_heatmap
+  - id: spacer_genre_heatmap
     type: column
     box:
       width: 4
-  - name: chart_genre_heatmap
+  - id: chart_genre_heatmap
     type: amcharts_4_xy
     box:
       width: 16
@@ -36,7 +36,7 @@ blocks:
             tooltipText: "{categoryX} - {categoryY}"
       cursor:
         type: XYCursor
-  - name: markdown_genre_heatmap
+  - id: markdown_genre_heatmap
     type: markdown
     properties:
       content: "### Genre Heatmap"

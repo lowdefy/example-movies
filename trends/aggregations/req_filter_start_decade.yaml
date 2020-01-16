@@ -1,4 +1,4 @@
-name: req_filter_start_decade
+id: req_filter_start_decade
 type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
 watch:

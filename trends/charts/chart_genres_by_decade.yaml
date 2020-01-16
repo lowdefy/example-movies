@@ -1,9 +1,9 @@
-name: card_genre_by_decade
+id: card_genre_by_decade
 type: card
 label:
   title: Number of Movies by Genre over Time
 blocks:
-  - name: chart_genres_by_decade
+  - id: chart_genres_by_decade
     type: amcharts_4_xy
     properties:
       data:

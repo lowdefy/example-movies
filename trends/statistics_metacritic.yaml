@@ -1,13 +1,13 @@
-name: card_statistics_metacritic
+id: card_statistics_metacritic
 type: card
 box:
   width: 6
 blocks:
-  - name: statistic_metacritic_title
+  - id: statistic_metacritic_title
     type: markdown
     properties:
       content: '### Metacritic Scores'
-  - name: statistic_metacritic_avg
+  - id: statistic_metacritic_avg
     type: statistic
     properties:
       title: Average
