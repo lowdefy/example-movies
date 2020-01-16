@@ -1,0 +1,27 @@
+id: pagination
+type: pagination_input
+properties:
+  showSizeChanger: true
+  showTotal: true
+  total:
+    _get:
+      on:
+        _request: req_total
+      key: 0.total
+actions:
+  onShowSizeChange:
+    - set():
+        loading: true
+    - refresh(): true
+    - set():
+        loading: false
+        results:
+          _request: req_search
+  onChange:
+    - set():
+        loading: true
+    - refresh(): req_search
+    - set():
+        loading: false
+        results:
+          _request: req_search
