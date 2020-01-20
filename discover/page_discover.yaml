@@ -1,0 +1,30 @@
+id: page_discover
+box:
+  width: 24
+properties:
+  title: Discover
+
+initialState:
+  rating_label: Award Wins
+  rating_value: award_wins
+
+requests:
+  - _ref: discover/aggregations/req_filter_genres.yaml
+  - _ref: discover/aggregations/req_filter_start_decade.yaml
+  - _ref: discover/aggregations/req_filter_end_decade.yaml
+  - _ref: discover/aggregations/req_top20_titles.yaml
+  - _ref: discover/aggregations/req_top20_actors.yaml
+  - _ref: discover/aggregations/req_top20_directors.yaml
+
+blocks:
+  - _ref: discover/discover_filter_form.yaml
+  - id: card_top
+    type: card
+    label:
+      title:
+        _nunjucks: | 
+          Top 20 by {{ rating_label }}
+    blocks:
+      - _ref: discover/discover_top_movies.yaml
+      - _ref: discover/discover_top_actors.yaml
+      - _ref: discover/discover_top_directors.yaml

@@ -33,8 +33,14 @@ layout:
         properties:
           title: Trends
           icon: area-chart
-
+      - id: menu_discover
+        type: menu_link
+        pageId: page_discover
+        properties:
+          title: Discover
+          icon: compass
 pages:
   - _ref: search/page_search.yaml
   - _ref: details/page_details.yaml
+  - _ref: discover/page_discover.yaml
   - _ref: trends/page_trends.yaml

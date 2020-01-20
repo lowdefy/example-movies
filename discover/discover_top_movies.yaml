@@ -1,0 +1,75 @@
+id: column_top_movies
+type: column
+blocks:
+  - id: title_top_movies
+    type: markdown
+    properties:
+      content: |
+        ### Movies
+  - id: grid_top_movies
+    type: ag_grid
+    box:
+      height: 12
+    label:
+      title: Top Movies
+    properties:
+      rowData: 
+        _request: req_top20_titles
+      defaultColDef:
+        resizable: true
+        cellStyle:
+          textAlign: center
+      columnDefs:
+        - headerName: "#"
+          field: rank
+          width: 40
+          resizable: false
+          cellStyle:
+            textAlign: center
+        - headerName: Title
+          field: title
+          width: 200
+          cellStyle:
+            textAlign: left
+        - headerName: Year
+          field: year
+          width: 80
+        - headerName: Genres
+          field: genres
+          width: 200
+          cellStyle:
+            textAlign: left
+        - headerName: 
+            _state: rating_label
+          field: rating
+          width: 140
+        - headerName: Award Wins
+          field: award_wins
+          width: 140
+          hide:
+            _mql_test:
+              rating_value: award_wins
+        - headerName: Award Nominations
+          field: award_nominations
+          width: 140
+          hide:
+            _mql_test:
+              rating_value: award_nominations
+        - headerName: IMDb Rating
+          field: imdb_rating
+          width: 140
+          hide:
+            _mql_test:
+              rating_value: imdb_rating
+        - headerName: Tomatometer®
+          field: tomatoes_critic_meter
+          width: 140
+          hide:
+            _mql_test:
+              rating_value: tomatoes_critic_meter
+        - headerName: Tomatoes Audience Score
+          field: tomatoes_viewer_meter
+          width: 140
+          hide:
+            _mql_test:
+              rating_value: tomatoes_viewer_meter
