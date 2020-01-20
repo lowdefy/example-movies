@@ -11,8 +11,9 @@ blocks:
     type: statistic
     box:
       width: 12
-    properties:
+    label:
       title: Average Audience Score
+    properties:
       value:
         _get:
           key: 0.avg_tomatoes_viewer_meter
@@ -27,8 +28,9 @@ blocks:
     type: statistic
     box:
       width: 12
-    properties:
+    label:
       title: Average Tomatometer®
+    properties:
       value:
         _get:
           key: 0.avg_tomatoes_critic_meter

@@ -11,8 +11,9 @@ blocks:
     type: statistic
     box:
       height: 2
-    properties:
+    label:
       title: Count
+    properties:
       value:
         _get:
           key: 0.total
