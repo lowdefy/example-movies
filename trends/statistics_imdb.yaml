@@ -11,8 +11,9 @@ blocks:
     type: statistic
     box:
       width: 8
-    properties:
+    label:
       title: Max
+    properties:
       value:
         _get:
           key: 0.max_imdb_rating
@@ -27,8 +28,9 @@ blocks:
     type: statistic
     box:
       width: 8
-    properties:
+    label:
       title: Min
+    properties:
       value:
         _get:
           key: 0.min_imdb_rating
@@ -43,8 +45,9 @@ blocks:
     type: statistic
     box:
       width: 8
-    properties:
+    label:
       title: Average
+    properties:
       value:
         _get:
           key: 0.avg_imdb_rating

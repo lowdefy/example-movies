@@ -1,0 +1,78 @@
+id: column_top_actors
+type: column
+blocks:
+  - id: title_top_actors
+    type: markdown
+    properties:
+      content: |
+        ### Actors
+  - id: grid_top_actors
+    type: ag_grid
+    box:
+      height: 12
+    label:
+      title: Top Actors
+    properties:
+      rowData: 
+        _request: req_top20_actors
+      defaultColDef:
+        resizable: true
+        cellStyle:
+          textAlign: center
+      columnDefs:
+        - headerName: "#"
+          field: rank
+          width: 40
+          resizable: false
+        - headerName: Actor
+          field: actor
+          width: 120
+          cellStyle:
+            textAlign: left
+        - headerName: "Number of Movies"
+          field: titles_count
+          width: 140
+        - headerName: 
+            _state: rating_label
+          field: rating
+          width: 140
+          valueFormatter: 'Math.round(value * 10) / 10'
+        - headerName: Award Wins
+          field: award_wins
+          width: 140
+          hide:
+            _mql_test:
+              rating_value: award_wins
+        - headerName: Award Nominations
+          field: award_nominations
+          width: 140
+          valueFormatter: 'Math.round(value * 10) / 10'
+          hide:
+            _mql_test:
+              rating_value: award_nominations
+        - headerName: IMDb Rating
+          field: imdb_rating
+          width: 140
+          valueFormatter: 'Math.round(value * 10) / 10'
+          hide:
+            _mql_test:
+              rating_value: imdb_rating
+        - headerName: Tomatometer®
+          field: tomatoes_critic_meter
+          width: 140
+          valueFormatter: 'Math.round(value)'
+          hide:
+            _mql_test:
+              rating_value: tomatoes_critic_meter
+        - headerName: Tomatoes Audience Score
+          field: tomatoes_viewer_meter
+          width: 140
+          valueFormatter: 'Math.round(value)'
+          hide:
+            _mql_test:
+              rating_value: tomatoes_viewer_meter
+        - headerName: Movies
+          field: titles
+          width: 450
+          cellStyle:
+            textAlign: left

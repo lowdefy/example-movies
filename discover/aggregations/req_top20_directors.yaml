@@ -1,0 +1,98 @@
+id: req_top20_directors
+type: mongodb_aggregation
+connectionId: mongodb_mflix_movies
+properties:
+  pipeline:
+    - _ref: discover/aggregations/filter_match.yaml
+    - _ref: discover/aggregations/minimum_match.yaml
+    - $group:
+        _id: $title
+        year:
+          $max: $year
+        genres:
+          $max: $genres
+        directors:
+          $max: $directors
+        imdb_rating:
+          $max: $imdb.rating
+        tomatoes_critic_rating:
+          $max: $tomatoes.critic.rating
+        tomatoes_critic_meter:
+          $max: $tomatoes.critic.meter
+        tomatoes_viewer_rating:
+          $max: $tomatoes.viewer.rating
+        tomatoes_viewer_meter:
+          $max: $tomatoes.viewer.meter
+        award_wins:
+          $max: $awards.wins
+        award_nominations:
+          $max: $awards.nominations
+    - $unwind:
+        path: $directors
+    - $group:
+        _id: $directors
+        titles_count:
+          $sum: 1
+        titles:
+          $push: $_id
+        genres:
+          $addToSet: $genres
+        imdb_rating:
+          $avg: $imdb_rating
+        tomatoes_critic_rating:
+          $avg: $tomatoes_critic_rating
+        tomatoes_critic_meter:
+          $avg: $tomatoes_critic_meter
+        tomatoes_viewer_rating:
+          $avg: $tomatoes_viewer_rating
+        tomatoes_viewer_meter:
+          $avg: $tomatoes_viewer_meter
+        award_wins:
+          $sum: $award_wins
+        award_nominations:
+          $sum: $award_nominations
+    - $match:
+        titles_count:
+          $gte: 5
+    - $addFields:
+        rating: 
+          _nunjucks: "${{ select_rating }}"
+    - $sort:
+        rating: -1
+    - $limit: 20
+    - $group:
+        _id: 0
+        A:
+          $push: $$ROOT
+    - $unwind:
+        path: $A
+        includeArrayIndex: rank
+    - $project:
+        _id: 0
+        rank:
+          $add:
+            - $rank
+            - 1
+        director: $A._id
+        titles:
+          $reduce:
+            input: $A.titles
+            initialValue: ''
+            in:
+              $cond:
+                - $eq:
+                    - $$value
+                    - ''
+                - $toString: $$this
+                - $concat:
+                    - $$value
+                    - ' || '
+                    - $toString: $$this
+        titles_count:
+          $size: $A.titles
+        rating: $A.rating
+        imdb_rating: $A.imdb_rating
+        tomatoes_critic_meter: $A.tomatoes_critic_meter
+        tomatoes_viewer_meter: $A.tomatoes_viewer_meter
+        award_wins: $A.award_wins
+        award_nominations: $A.award_nominations

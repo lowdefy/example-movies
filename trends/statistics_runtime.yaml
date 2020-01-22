@@ -12,8 +12,9 @@ blocks:
     box:
       width: 8
       height: 2
-    properties:
+    label:
       title: Total
+    properties:
       value:
         _get:
           key: 0.total_runtime_years
@@ -28,8 +29,9 @@ blocks:
     type: statistic
     box:
       width: 8
-    properties:
+    label:
       title: Max
+    properties:
       value:
         _get:
           key: 0.max_runtime
@@ -44,8 +46,9 @@ blocks:
     type: statistic
     box:
       width: 8
-    properties:
+    label:
       title: Average
+    properties:
       value:
         _get:
           key: 0.avg_runtime

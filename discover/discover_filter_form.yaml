@@ -1,0 +1,160 @@
+id: card_filter
+type: card
+label:
+  title: Filter
+blocks:
+  - id: column_rating
+    type: column
+    box:
+      width: 4
+    blocks:
+      - id: select_rating
+        type: select_input
+        box:
+          width: 24
+        label:
+          title: Rating
+        defaultValue: award_wins
+        properties:
+          options:
+            - label: Award Wins
+              value: award_wins
+            - label: Award Nominations
+              value: award_nominations
+            - label: IMDb Rating
+              value: imdb_rating
+            - label: Tomatometer®
+              value: tomatoes_critic_meter
+            - label: Tomatoes Audience Score
+              value: tomatoes_viewer_meter
+            # - label: Number of Movies
+            #   value: count
+  - id: column_time_period
+    type: column
+    box:
+      width: 10
+    blocks:
+      - id: radio_button_time_period
+        type: radio_input
+        box:
+          width: 8
+        label:
+          title: Select time period
+        defaultValue: full_history
+        properties:
+          options:
+            - label: Full History
+              value: full_history
+            - label: Select period
+              value: select_period
+      - id: select_decade_from
+        type: select_input
+        box:
+          width: 8
+        label:
+          title: "From"
+        visible:
+          _mql_test:
+            radio_button_time_period: select_period
+        defaultValue: 1940
+        properties:
+          options:
+            _request: req_filter_start_decade
+      - id: select_decade_to
+        type: select_input
+        box:
+          width: 8
+        label:
+          title: "To"
+        visible:
+          _mql_test:
+            radio_button_time_period: select_period
+        defaultValue: 2020
+        properties:
+          options:
+            _request: req_filter_end_decade
+  - id: column_genres
+    type: column
+    box:
+      width: 10
+    blocks:
+      - id: radio_button_genres
+        type: radio_input
+        box:
+          width: 8
+        label:
+          title: Select Genres
+        defaultValue: all_genres
+        properties:
+          options:
+            - label: All Genres
+              value: all_genres
+            - label: Select
+              value: select_genre
+      - id: multiple_select_genres
+        type: multiple_select_input
+        box:
+          width: 16
+        label:
+          title: Genres
+        visible:
+          _mql_test:
+            radio_button_genres: select_genre
+        properties:
+          placeholder: Select genres
+          showSearch: true
+          options:
+            _request: req_filter_genres
+  - id: slider_tomatoes_reviews
+    type: slider_input
+    label:
+      title: Minimum number of Rotten Tomato Critic Reviews
+      colon: false
+    properties:
+      min: 0
+      max: 330
+      step: 10
+      disableIcons: true
+      showDots: false
+      marks:
+        0: '0'
+        330: '330'
+  - id: button_apply
+    type: button
+    box:
+      width: 16
+    label:
+      title: Apply Filter
+    properties:
+      icon: filter
+    actions:
+      onClick:
+        - refresh(): true
+        - set():
+            rating_label: 
+              _nunjucks: | 
+                {% if select_rating == 'imdb_rating' %}
+                  IMDb Rating
+                {% elif select_rating == 'tomatoes_critic_meter' %}
+                  Tomatometer®
+                {% elif select_rating == 'tomatoes_viewer_meter' %}
+                  Tomatoes Audience Score
+                {% elif select_rating == 'award_wins' %}
+                  Award Wins
+                {% elif select_rating == 'award_nominations' %}
+                  Award Nominations
+                {% endif %}
+            rating_value: 
+              _state: select_rating
+  - id: button_reset
+    type: button
+    box:
+      width: 8
+    label:
+      title: Reset
+    properties:
+      type: normal
+      icon: reload
+    actions:
+      onClick:
+        - reset(): true

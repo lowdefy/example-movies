@@ -1,0 +1,28 @@
+id: req_filter_end_decade
+type: mongodb_aggregation
+connectionId: mongodb_mflix_movies
+properties:
+  pipeline:
+    - $match:
+        type: movie
+    - $group:
+        _id:
+          $add:
+            - $subtract:
+              - $year
+              - $mod:
+                  - $year
+                  - 10
+            - 10
+    - $project:
+        _id: 0
+        label:
+          $concat:
+            - $toString: 
+                $subtract:
+                  - $_id
+                  - 10
+            - "'s"
+        value: $_id
+    - $sort:
+        label: -1

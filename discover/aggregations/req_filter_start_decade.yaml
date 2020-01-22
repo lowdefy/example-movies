@@ -1,0 +1,26 @@
+id: req_filter_start_decade
+type: mongodb_aggregation
+connectionId: mongodb_mflix_movies
+properties:
+  pipeline:
+    - $match:
+        type: movie
+    - $group:
+        _id:
+          $subtract:
+            - $year
+            - $mod:
+                - $year
+                - 10
+    - $match:
+        _id:
+          $ne: 2010
+    - $project:
+        _id: 0
+        label:
+          $concat:
+            - $toString: $_id
+            - "'s"
+        value: $_id
+    - $sort:
+        label: 1
