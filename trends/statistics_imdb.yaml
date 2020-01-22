@@ -6,11 +6,11 @@ blocks:
   - id: statistic_imdb_title
     type: markdown
     properties:
-      content: '### IMDb Ratings'
+      content: "### IMDb Ratings"
   - id: statistic_imdb_max
     type: statistic
     box:
-      span: 8
+      psan: 8
     properties:
       title: Max
       value:

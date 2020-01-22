@@ -1,0 +1,18 @@
+$match:
+  $expr:
+    $and:
+      - $gt:
+          - $imdb.rating
+          - 0
+      - $gt:
+          # - $imdb.votes
+          # - 10000
+          - $tomatoes.critic.numReviews
+          - _state:
+              slider_tomatoes_reviews
+      - $not:
+          $in:
+            - ''
+            - - $imdb.rating
+              - $tomatoes.critic.meter
+              - $tomatoes.viewer.meter

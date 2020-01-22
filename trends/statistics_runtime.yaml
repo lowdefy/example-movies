@@ -42,7 +42,7 @@ blocks:
   - id: statistic_avg_runtime
     type: statistic
     box:
-      span: 8
+      width: 8
     properties:
       title: Average
       value:

@@ -6,7 +6,7 @@ blocks:
   - id: statistic_tomatoes_title
     type: markdown
     properties:
-      content: '### Rotten Tomatoes'
+      content: "### Rotten Tomatoes"
   - id: statistic_tomatoes_viewer_avg
     type: statistic
     box:
@@ -22,7 +22,7 @@ blocks:
       valueStyle:
         fontWeight: bold
         fontSize: 40
-      suffix: '%'
+      suffix: "%"
   - id: statistic_tomatoes_critic_avg
     type: statistic
     box:
@@ -38,4 +38,4 @@ blocks:
       valueStyle:
         fontWeight: bold
         fontSize: 40
-      suffix: '%'
+      suffix: "%"
