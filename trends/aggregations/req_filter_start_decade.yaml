@@ -1,10 +1,6 @@
 id: req_filter_start_decade
 type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
-watch:
-  - filter_select_country
-  - filter_select_genre
-  - filter_select_language
 properties:
   pipeline:
     - "$match":

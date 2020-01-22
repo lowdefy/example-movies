@@ -1,6 +1,6 @@
 id: top_awards_card
 type: card
-label:
+properties:
   title: Top Awards
 blocks:
   - id: table_top_awards

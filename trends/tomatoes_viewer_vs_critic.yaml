@@ -1,14 +1,12 @@
 id: card_tomatoes_viewer_vs_critic
 type: card
+box:
+  justifyItems: center
 blocks:
-  - id: spacer_tomatoes_viewer_vs_critic
-    type: column
-    box:
-      width: 4
   - id: chart_tomatoes_viewer_vs_critic
     type: amcharts_4_xy
     box:
-      width: 16
+      maxWidth: 600
     actions:
       onClick:
         - set():
@@ -111,10 +109,9 @@ blocks:
     type: modal
     visible:
       _state: tomatoes_viewer_vs_critic.selected
-    label:
-      title: Rotten Tomatoes Viewer vs Critic Meters
     properties:
-      width: 800
+      title: Rotten Tomatoes Viewer vs Critic Meters
+      width: 600
     actions:
       onOk:
         - set():

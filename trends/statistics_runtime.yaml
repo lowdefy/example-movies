@@ -1,17 +1,16 @@
 id: card_statistics_runtime
 type: card
 box:
-  width: 16
+  span: 16
 blocks:
   - id: statistic_runtime_title
     type: markdown
     properties:
-      content: '### Run Time'
+      content: "### Run Time"
   - id: statistic_total_runtime_minutes
     type: statistic
     box:
-      width: 8
-      height: 2
+      span: 8
     properties:
       title: Total
       value:
@@ -27,7 +26,7 @@ blocks:
   - id: statistic_max_runtime
     type: statistic
     box:
-      width: 8
+      span: 8
     properties:
       title: Max
       value:
@@ -43,7 +42,7 @@ blocks:
   - id: statistic_avg_runtime
     type: statistic
     box:
-      width: 8
+      span: 8
     properties:
       title: Average
       value:

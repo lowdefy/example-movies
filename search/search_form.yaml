@@ -1,22 +1,20 @@
 id: form_container
 type: column
 blocks:
-  - id: search_input
+  - id: search
     type: text_input
-    label:
-      title: ""
     box:
-      width: { md: 24, lg: 16 }
+      span: { md: 24, lg: 16 }
     properties:
+      title: ""
       size: large
       placeholder: What did you come here looking for? 🤩
   - id: search_button
     type: button
     box:
-      width: { xs: 12, sm: 14, md: 16, lg: 5 }
-    label:
-      title: Search
+      span: { xs: 12, sm: 14, md: 16, lg: 5 }
     properties:
+      title: Search
       keyCode: 13
       icon: search
       size: large
@@ -24,8 +22,6 @@ blocks:
       onClick:
         - set():
             loading: true
-            search:
-              _state: search_input
             page.page: 1
             page.skip: 0
         - refresh(): true
@@ -36,10 +32,9 @@ blocks:
   - id: reset_button
     type: button
     box:
-      width: { xs: 12, sm: 10, md: 8, lg: 3 }
-    label:
-      title: Reset
+      span: { xs: 12, sm: 10, md: 8, lg: 3 }
     properties:
+      title: Reset
       type: default
       icon: reload
       size: large

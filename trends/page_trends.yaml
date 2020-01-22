@@ -2,7 +2,7 @@ id: page_trends
 properties:
   title: Movie Trends
 box:
-  width: 24
+  maxWidth: 1200
 initialState:
   tomatoes_viewer_vs_critic:
     selected: false

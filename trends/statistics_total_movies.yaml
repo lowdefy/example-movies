@@ -1,16 +1,14 @@
 id: card_statistics_total_movies
 type: card
 box:
-  width: 8
+  span: 8
 blocks:
   - id: statistic_total_movies_title
     type: markdown
     properties:
-      content: '### Dataset Size'
+      content: "### Dataset Size"
   - id: statistic_total_movies
     type: statistic
-    box:
-      height: 2
     properties:
       title: Count
       value:

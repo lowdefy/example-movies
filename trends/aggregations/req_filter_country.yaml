@@ -1,12 +1,6 @@
 id: req_filter_country
 type: mongodb_aggregation
 connectionId: mongodb_mflix_movies
-watch:
-  - filter_select_month_from
-  - filter_select_month_to
-  - filter_select_type
-  - filter_select_genre
-  - filter_select_language
 properties:
   pipeline:
     - _ref: trends/aggregation/match.yaml
