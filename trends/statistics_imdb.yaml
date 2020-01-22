@@ -10,7 +10,7 @@ blocks:
   - id: statistic_imdb_max
     type: statistic
     box:
-      psan: 8
+      span: 8
     properties:
       title: Max
       value:

@@ -54,6 +54,7 @@ blocks:
                     ### {{ title }}
                     <span style="font-size: 14px;">{{ year }}</span> {% for genre in genres %}
                     <span style="font-size: 12px; color: rgba(0,0,0,0.5);">| {{genre}}</span> {% endfor %}
+
                     {{ plot }}
           - id: results.$.like_anchor
             type: anchor

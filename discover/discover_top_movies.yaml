@@ -8,12 +8,10 @@ blocks:
         ### Movies
   - id: grid_top_movies
     type: ag_grid
-    box:
-      height: 12
     label:
       title: Top Movies
     properties:
-      rowData: 
+      rowData:
         _request: req_top20_titles
       defaultColDef:
         resizable: true
@@ -39,7 +37,7 @@ blocks:
           width: 200
           cellStyle:
             textAlign: left
-        - headerName: 
+        - headerName:
             _state: rating_label
           field: rating
           width: 140
