@@ -35,7 +35,6 @@ mutations:
 
 initialState:
   loading: false
-  search: titanic
   page:
     pageSize: 10
     skip: 0
