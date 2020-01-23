@@ -1,6 +1,6 @@
 id: page_details
 box:
-  width: 24
+  width: 1200
 properties:
   title: Movie Details 🎬
 initialState:
@@ -51,12 +51,12 @@ blocks:
   - id: details_card
     type: card
     box:
-      minHeight: 24
+      minHeight: 300
     blocks:
       - id: poster
         type: markdown
         box:
-          width: { sm: 24, md: 8 }
+          span: { sm: 24, md: 8 }
         properties:
           content:
             _nunjucks: |
@@ -68,7 +68,7 @@ blocks:
       - id: content
         type: markdown
         box:
-          width: { sm: 24, md: 16 }
+          span: { sm: 24, md: 16 }
         properties:
           content:
             _nunjucks: |
@@ -94,11 +94,11 @@ blocks:
               {% endif %}
       - id: comment_input
         type: text_area_input
-        label:
+        properties:
           title: Comment
       - id: comment_post_button
         type: button
-        label:
+        properties:
           title: Post
         actions:
           onClick:

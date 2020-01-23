@@ -1,6 +1,6 @@
 id: page_search
 box:
-  width: 24
+  maxWidth: 1200
 properties:
   title: Movie Search 🔎
 requests:
@@ -35,7 +35,6 @@ mutations:
 
 initialState:
   loading: false
-  search: titanic
   page:
     pageSize: 10
     skip: 0
@@ -45,11 +44,9 @@ initialState:
 blocks:
   - id: card_search
     type: card
-    label:
+    properties:
       title: Search for a movie or actor
     blocks:
       - _ref: search/search_form.yaml
       - _ref: search/search_list.yaml
       - _ref: search/search_pagination.yaml
-
-

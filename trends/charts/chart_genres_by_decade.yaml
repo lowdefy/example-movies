@@ -1,6 +1,6 @@
 id: card_genre_by_decade
 type: card
-label:
+properties:
   title: Number of Movies by Genre over Time
 blocks:
   - id: chart_genres_by_decade

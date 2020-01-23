@@ -24,7 +24,7 @@ blocks:
       - id: results.$.poster
         type: markdown
         box:
-          width: { sm: 8, md: 4 }
+          span: { sm: 8, md: 4 }
         properties:
           content:
             _nunjucks:
@@ -34,14 +34,14 @@ blocks:
                     <img style="max-width: 100%; max-height: 100%; display:block; margin:auto;" src="{{ poster }}" alt="poster">
                   </div>
                 {% else %}
-                  <div style="height: 200px; font-size: 100px; text-align: center;" >🎞</div>
+                <div style="height: 200px; font-size: 100px; text-align: center;" >🎞</div>
                 {% endif %}
               on:
                 _state: results.$
       - id: results.$.content
         type: column
         box:
-          width: { sm: 16, md: 20 }
+          span: { sm: 16, md: 20 }
         blocks:
           - id: results.$.description
             type: markdown
@@ -51,20 +51,19 @@ blocks:
                   on:
                     _state: results.$
                   template: |
-                    ### {{ title }} 
+                    ### {{ title }}
                     <span style="font-size: 14px;">{{ year }}</span> {% for genre in genres %}
                     <span style="font-size: 12px; color: rgba(0,0,0,0.5);">| {{genre}}</span> {% endfor %}
 
                     {{ plot }}
           - id: results.$.like_anchor
             type: anchor
-            label:
-              title:
-                _state: results.$.likes
             box:
-              width: { xs: 10, sm: 6, md: 3 }
+              span: { xs: 10, sm: 6, md: 3 }
               align: center
             properties:
+              title:
+                _state: results.$.likes
               style:
                 fontSize: 17px
               icon: heart
@@ -97,11 +96,10 @@ blocks:
                               - 1
           - id: results.$.view_anchor
             type: anchor
-            label:
-              title: View Details
             box:
-              width: { xs: 12, sm: 8, md: 4 }
+              span: { xs: 12, sm: 8, md: 4 }
             properties:
+              title: View Details
               icon: link
             actions:
               onClick:
@@ -113,7 +111,7 @@ blocks:
           - id: results.$.rating
             type: markdown
             box:
-              width: { xs: 24, sm: 24, md: 16 }
+              span: { xs: 24, sm: 24, md: 16 }
             properties:
               content:
                 _nunjucks:

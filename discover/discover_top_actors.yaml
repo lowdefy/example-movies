@@ -8,12 +8,10 @@ blocks:
         ### Actors
   - id: grid_top_actors
     type: ag_grid
-    box:
-      height: 12
     label:
       title: Top Actors
     properties:
-      rowData: 
+      rowData:
         _request: req_top20_actors
       defaultColDef:
         resizable: true
@@ -32,11 +30,11 @@ blocks:
         - headerName: "Number of Movies"
           field: titles_count
           width: 140
-        - headerName: 
+        - headerName:
             _state: rating_label
           field: rating
           width: 140
-          valueFormatter: 'Math.round(value * 10) / 10'
+          valueFormatter: "Math.round(value * 10) / 10"
         - headerName: Award Wins
           field: award_wins
           width: 140
@@ -46,28 +44,28 @@ blocks:
         - headerName: Award Nominations
           field: award_nominations
           width: 140
-          valueFormatter: 'Math.round(value * 10) / 10'
+          valueFormatter: "Math.round(value * 10) / 10"
           hide:
             _mql_test:
               rating_value: award_nominations
         - headerName: IMDb Rating
           field: imdb_rating
           width: 140
-          valueFormatter: 'Math.round(value * 10) / 10'
+          valueFormatter: "Math.round(value * 10) / 10"
           hide:
             _mql_test:
               rating_value: imdb_rating
         - headerName: Tomatometer®
           field: tomatoes_critic_meter
           width: 140
-          valueFormatter: 'Math.round(value)'
+          valueFormatter: "Math.round(value)"
           hide:
             _mql_test:
               rating_value: tomatoes_critic_meter
         - headerName: Tomatoes Audience Score
           field: tomatoes_viewer_meter
           width: 140
-          valueFormatter: 'Math.round(value)'
+          valueFormatter: "Math.round(value)"
           hide:
             _mql_test:
               rating_value: tomatoes_viewer_meter

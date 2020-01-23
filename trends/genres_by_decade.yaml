@@ -3,8 +3,6 @@ type: card
 blocks:
   - id: chart_genres_by_decade
     type: amcharts_4_xy
-    box:
-      height: 12
     properties:
       data:
         _request: req_genres_by_decade

@@ -1,7 +1,7 @@
 id: card_statistics_metacritic
 type: card
 box:
-  width: 6
+  span: 6
 blocks:
   - id: statistic_metacritic_title
     type: markdown

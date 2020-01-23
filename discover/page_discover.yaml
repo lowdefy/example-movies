@@ -1,6 +1,6 @@
 id: page_discover
 box:
-  width: 24
+  width: 1200
 properties:
   title: Discover
 
@@ -22,7 +22,7 @@ blocks:
     type: card
     label:
       title:
-        _nunjucks: | 
+        _nunjucks: |
           Top 20 by {{ rating_label }}
     blocks:
       - _ref: discover/discover_top_movies.yaml
