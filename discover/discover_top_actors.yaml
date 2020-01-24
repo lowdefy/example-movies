@@ -8,8 +8,6 @@ blocks:
         ### Actors
   - id: grid_top_actors
     type: ag_grid
-    label:
-      title: Top Actors
     properties:
       rowData:
         _request: req_top20_actors

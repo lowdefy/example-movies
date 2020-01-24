@@ -20,7 +20,7 @@ blocks:
   - _ref: discover/discover_filter_form.yaml
   - id: card_top
     type: card
-    label:
+    properties:
       title:
         _nunjucks: |
           Top 20 by {{ rating_label }}
