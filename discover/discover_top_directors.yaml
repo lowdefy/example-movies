@@ -8,8 +8,6 @@ blocks:
         ### Directors
   - id: grid_top_directors
     type: ag_grid
-    label:
-      title: Top Directors
     properties:
       rowData:
         _request: req_top20_directors

@@ -8,8 +8,6 @@ blocks:
         ### Movies
   - id: grid_top_movies
     type: ag_grid
-    label:
-      title: Top Movies
     properties:
       rowData:
         _request: req_top20_titles

@@ -9,9 +9,8 @@ blocks:
       content: '### Metacritic Scores'
   - id: statistic_metacritic_avg
     type: statistic
-    label:
-      title: Average
     properties:
+      title: Average
       value:
         _get:
           key: 0.avg_metacritic_score
