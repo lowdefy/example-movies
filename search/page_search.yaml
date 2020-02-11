@@ -35,7 +35,7 @@ mutations:
 
 initialState:
   loading: false
-  page:
+  pagination:
     pageSize: 10
     skip: 0
   results:

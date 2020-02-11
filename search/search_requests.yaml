@@ -41,9 +41,9 @@
       - $sort:
           sortValue: -1
       - $skip:
-          _state: page.skip
+          _state: pagination.skip
       - $limit:
-          _state: page.pageSize
+          _state: pagination.pageSize
       - $project:
           imdb: 1
           tomatoes: 1
