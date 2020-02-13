@@ -103,7 +103,7 @@ blocks:
               icon: link
             actions:
               onClick:
-                - pageLink():
+                - link():
                     pageId: page_details
                     urlQuery:
                       _id:
