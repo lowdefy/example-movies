@@ -24,7 +24,7 @@ blocks:
         # - label: Number of Movies
         #   value: count
   - id: column_time_period
-    type: column
+    type: grid
     box:
       span: 10
     blocks:
@@ -65,7 +65,7 @@ blocks:
           options:
             _request: req_filter_end_decade
   - id: column_genres
-    type: column
+    type: grid
     box:
       span: 10
     blocks:

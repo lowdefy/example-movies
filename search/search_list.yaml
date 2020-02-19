@@ -16,7 +16,7 @@ blocks:
     visible:
       _state: loading
   - id: results.$.item
-    type: column
+    type: grid
     visible:
       _not:
         _state: loading
@@ -39,7 +39,7 @@ blocks:
               on:
                 _state: results.$
       - id: results.$.content
-        type: column
+        type: grid
         box:
           span: { sm: 16, md: 20 }
         blocks:

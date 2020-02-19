@@ -1,5 +1,5 @@
 id: column_top_movies
-type: column
+type: grid
 blocks:
   - id: title_top_movies
     type: markdown

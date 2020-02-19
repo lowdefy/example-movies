@@ -2,7 +2,7 @@ id: card_genre_heatmap
 type: card
 blocks:
   - id: spacer_genre_heatmap
-    type: column
+    type: grid
     box:
       span: 4
   - id: chart_genre_heatmap

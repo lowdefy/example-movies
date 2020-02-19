@@ -1,5 +1,5 @@
 id: form_container
-type: column
+type: grid
 blocks:
   - id: search
     type: text_input
