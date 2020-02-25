@@ -1,7 +1,9 @@
 id: card_statistics_tomatoes
 type: card
 box:
-  span: 9
+  span: 4
+  md:
+    span: 6
 blocks:
   - id: statistic_tomatoes_title
     type: markdown
@@ -10,7 +12,9 @@ blocks:
   - id: statistic_tomatoes_viewer_avg
     type: statistic
     box:
-      span: 12
+      span: 6
+      sm:
+        span: 6
     properties:
       title: Average Audience Score
       value:
@@ -26,7 +30,9 @@ blocks:
   - id: statistic_tomatoes_critic_avg
     type: statistic
     box:
-      span: 12
+      span: 6
+      sm:
+        span: 6
     properties:
       title: Average Tomatometer®
       value:

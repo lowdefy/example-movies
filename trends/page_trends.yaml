@@ -1,8 +1,8 @@
 id: page_trends
+type: page_sider_menu
+public: true
 properties:
   title: Movie Trends
-box:
-  maxWidth: 1200
 initialState:
   tomatoes_viewer_vs_critic:
     selected: false

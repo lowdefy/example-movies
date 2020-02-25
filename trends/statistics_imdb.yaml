@@ -1,16 +1,20 @@
 id: card_statistics_imdb
 type: card
 box:
-  span: 9
+  span: 5
+  md: 
+    span: 6
 blocks:
   - id: statistic_imdb_title
     type: markdown
     properties:
-      content: "### IMDb Ratings"
+      content: "### IMDb Ratings 123"
   - id: statistic_imdb_max
     type: statistic
     box:
-      span: 8
+      span: 4
+      sm:
+        span: 4
     properties:
       title: Max
       value:
@@ -26,7 +30,9 @@ blocks:
   - id: statistic_imdb_min
     type: statistic
     box:
-      span: 8
+      span: 4
+      sm:
+        span: 4
     properties:
       title: Min
       value:
@@ -42,7 +48,9 @@ blocks:
   - id: statistic_imdb_avg
     type: statistic
     box:
-      span: 8
+      span: 4
+      sm:
+        span: 4
     properties:
       title: Average
       value:

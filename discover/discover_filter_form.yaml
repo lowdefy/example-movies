@@ -6,7 +6,7 @@ blocks:
   - id: select_rating
     type: select_input
     box:
-      span: 4
+      span: 2
     defaultValue: award_wins
     properties:
       title: Rating
@@ -24,14 +24,14 @@ blocks:
         # - label: Number of Movies
         #   value: count
   - id: column_time_period
-    type: column
+    type: grid
     box:
-      span: 10
+      span: 5
     blocks:
       - id: radio_button_time_period
         type: radio_input
         box:
-          span: 8
+          span: 4
         defaultValue: full_history
         properties:
           title: Select time period
@@ -43,7 +43,7 @@ blocks:
       - id: select_decade_from
         type: select_input
         box:
-          span: 8
+          span: 4
         visible:
           _mql_test:
             radio_button_time_period: select_period
@@ -55,7 +55,7 @@ blocks:
       - id: select_decade_to
         type: select_input
         box:
-          span: 8
+          span: 4
         visible:
           _mql_test:
             radio_button_time_period: select_period
@@ -65,14 +65,14 @@ blocks:
           options:
             _request: req_filter_end_decade
   - id: column_genres
-    type: column
+    type: grid
     box:
-      span: 10
+      span: 5
     blocks:
       - id: radio_button_genres
         type: radio_input
         box:
-          span: 8
+          span: 4
         defaultValue: all_genres
         properties:
           title: Select Genres
@@ -84,7 +84,7 @@ blocks:
       - id: multiple_select_genres
         type: multiple_select_input
         box:
-          span: 16
+          span: 8
         visible:
           _mql_test:
             radio_button_genres: select_genre
@@ -111,7 +111,7 @@ blocks:
   - id: button_apply
     type: button
     box:
-      span: 16
+      span: 8
     properties:
       title: Apply Filter
       icon: filter
@@ -137,7 +137,7 @@ blocks:
   - id: button_reset
     type: button
     box:
-      span: 8
+      span: 4
     properties:
       title: Reset
       type: normal

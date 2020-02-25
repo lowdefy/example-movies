@@ -17,9 +17,9 @@ connections:
       collection: movies
       read: true
       write: true
-layout:
-  menu:
-    type: header_menu
+
+menus:
+  - id: main_menu
     links:
       - id: menu_search
         type: menu_link
@@ -39,6 +39,7 @@ layout:
         properties:
           title: Discover
           icon: compass
+          
 pages:
   - _ref: search/page_search.yaml
   - _ref: details/page_details.yaml

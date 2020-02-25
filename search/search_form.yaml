@@ -1,10 +1,12 @@
 id: form_container
-type: column
+type: grid
 blocks:
   - id: search
     type: text_input
     box:
-      span: { md: 24, lg: 16 }
+      span: 8
+      md: 
+        span: 12
     properties:
       title: ""
       size: large
@@ -12,7 +14,11 @@ blocks:
   - id: search_button
     type: button
     box:
-      span: { xs: 12, sm: 14, md: 16, lg: 5 }
+      span: 2
+      sm: 
+        span: 7
+      md: 
+        span: 8
     properties:
       title: Search
       keyCode: 13
@@ -32,7 +38,11 @@ blocks:
   - id: reset_button
     type: button
     box:
-      span: { xs: 12, sm: 10, md: 8, lg: 3 }
+      span: 2
+      sm: 
+        span: 5
+      md: 
+        span: 4
     properties:
       title: Reset
       type: default

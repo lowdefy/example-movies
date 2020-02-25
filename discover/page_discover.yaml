@@ -1,6 +1,6 @@
 id: page_discover
-box:
-  width: 1200
+type: page_sider_menu
+public: true
 properties:
   title: Discover
 
