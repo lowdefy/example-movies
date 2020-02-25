@@ -1,7 +1,9 @@
 id: card_statistics_runtime
 type: card
 box:
-  span: 16
+  span: 8
+  md: 
+    span: 12
 blocks:
   - id: statistic_runtime_title
     type: markdown
@@ -10,7 +12,7 @@ blocks:
   - id: statistic_total_runtime_minutes
     type: statistic
     box:
-      span: 8
+      span: 4
     properties:
       title: Total
       value:
@@ -26,7 +28,7 @@ blocks:
   - id: statistic_max_runtime
     type: statistic
     box:
-      span: 8
+      span: 4
     properties:
       title: Max
       value:
@@ -42,7 +44,7 @@ blocks:
   - id: statistic_avg_runtime
     type: statistic
     box:
-      span: 8
+      span: 4
     properties:
       title: Average
       value:

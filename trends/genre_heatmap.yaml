@@ -4,11 +4,11 @@ blocks:
   - id: spacer_genre_heatmap
     type: grid
     box:
-      span: 4
+      span: 2
   - id: chart_genre_heatmap
     type: amcharts_4_xy
     box:
-      span: 16
+      span: 8
     properties:
       data:
         _request: req_genre_heatmap

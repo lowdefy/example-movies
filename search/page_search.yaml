@@ -1,6 +1,6 @@
 id: page_search
-box:
-  maxWidth: 1200
+type: page_header_menu
+public: true
 properties:
   title: Movie Search 🔎
 requests:
@@ -40,7 +40,6 @@ initialState:
     skip: 0
   results:
     _request: req_search
-
 blocks:
   - id: card_search
     type: card

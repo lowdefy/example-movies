@@ -1,6 +1,6 @@
 id: page_details
-box:
-  width: 1200
+type: page_header_menu
+public: true
 properties:
   title: Movie Details 🎬
 initialState:
@@ -56,7 +56,9 @@ blocks:
       - id: poster
         type: markdown
         box:
-          span: { sm: 24, md: 8 }
+          span: 4
+          sm: 
+            span: 12
         properties:
           content:
             _nunjucks: |
@@ -68,7 +70,9 @@ blocks:
       - id: content
         type: markdown
         box:
-          span: { sm: 24, md: 16 }
+          span: 8
+          sm: 
+            span: 12
         properties:
           content:
             _nunjucks: |

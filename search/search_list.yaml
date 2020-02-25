@@ -24,7 +24,9 @@ blocks:
       - id: results.$.poster
         type: markdown
         box:
-          span: { sm: 8, md: 4 }
+          span: 2
+          sm: 
+            span: 4
         properties:
           content:
             _nunjucks:
@@ -41,7 +43,9 @@ blocks:
       - id: results.$.content
         type: grid
         box:
-          span: { sm: 16, md: 20 }
+          span: 10
+          sm: 
+            span: 8
         blocks:
           - id: results.$.description
             type: markdown
@@ -59,7 +63,9 @@ blocks:
           - id: results.$.like_anchor
             type: anchor
             box:
-              span: { xs: 10, sm: 6, md: 3 }
+              span: 2
+              sm: 
+                span: 3
               align: center
             properties:
               title:
@@ -97,7 +103,9 @@ blocks:
           - id: results.$.view_anchor
             type: anchor
             box:
-              span: { xs: 12, sm: 8, md: 4 }
+              span: 2
+              sm: 
+                span: 4
             properties:
               title: View Details
               icon: link
@@ -111,7 +119,9 @@ blocks:
           - id: results.$.rating
             type: markdown
             box:
-              span: { xs: 24, sm: 24, md: 16 }
+              span: 8
+              sm: 
+                span: 12
             properties:
               content:
                 _nunjucks:

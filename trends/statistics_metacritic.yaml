@@ -1,7 +1,9 @@
 id: card_statistics_metacritic
 type: card
 box:
-  span: 6
+  span: 3
+  md: 
+    span: 6
 blocks:
   - id: statistic_metacritic_title
     type: markdown

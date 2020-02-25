@@ -1,7 +1,9 @@
 id: card_statistics_total_movies
 type: card
 box:
-  span: 8
+  span: 4
+  md:
+    span: 6
 blocks:
   - id: statistic_total_movies_title
     type: markdown
