@@ -23,19 +23,19 @@ menus:
     links:
       - id: menu_search
         type: menu_link
-        pageId: page_search
+        pageId: search
         properties:
           title: Movie Lookup
           icon: search
       - id: menu_trends
         type: menu_link
-        pageId: page_trends
+        pageId: trends
         properties:
           title: Trends
           icon: area-chart
       - id: menu_discover
         type: menu_link
-        pageId: page_discover
+        pageId: discover
         properties:
           title: Discover
           icon: compass
