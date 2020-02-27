@@ -112,7 +112,7 @@ blocks:
             actions:
               onClick:
                 - link():
-                    pageId: page_details
+                    pageId: details
                     urlQuery:
                       _id:
                         _state: results.$._id

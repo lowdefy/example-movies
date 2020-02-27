@@ -1,4 +1,4 @@
-id: page_search
+id: search
 type: page_header_menu
 public: true
 properties:
