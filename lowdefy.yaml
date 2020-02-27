@@ -1,3 +1,6 @@
+config:
+  homePageId: search
+
 connections:
   - id: mongodb_mflix_comments
     type: mongodb_collection
