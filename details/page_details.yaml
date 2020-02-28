@@ -3,13 +3,17 @@ type: page_header_menu
 public: true
 properties:
   title: Movie Details 🎬
-initialState:
-  _id:
-    _url_query: _id
-  details:
-    _request: req_movie_details
-  comments:
-    _request: req_movie_comments
+actions:
+  onInit:
+    - set():
+        _id: 
+          _url_query: _id
+    - fetch(): true
+    - set():
+        details:
+          _request: req_movie_details
+        comments:
+          _request: req_movie_comments
 requests:
   - id: req_movie_details
     type: mongodb_find_one

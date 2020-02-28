@@ -30,7 +30,7 @@ blocks:
             loading: true
             page.page: 1
             page.skip: 0
-        - refresh(): true
+        - fetch(): true
         - set():
             loading: false
             results:
