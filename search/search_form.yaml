@@ -26,12 +26,17 @@ blocks:
       size: large
     actions:
       onClick:
-        - set():
+        - id: set_loading
+          type: set()
+          params:
             loading: true
             page.page: 1
             page.skip: 0
-        - fetch(): true
-        - set():
+        - id: fetch_all
+          type: fetch()
+        - id: reset_loading
+          type: set()
+          params:
             loading: false
             results:
               _request: req_search
@@ -50,4 +55,5 @@ blocks:
       size: large
     actions:
       onClick:
-        - reset(): true
+        - id: reset
+          type: reset()

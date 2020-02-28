@@ -81,14 +81,20 @@ blocks:
                     - "outlined"
             actions:
               onClick:
-                - mutate(): mutation_like_movie
+                - id: mutation_like_movie
+                  type: mutate()
+                  params: mutation_like_movie
                   skip:
-                      _state: results.$.liked_by_user
-                - mutate(): mutation_unlike_movie
+                    _state: results.$.liked_by_user
+                - id: mutation_unlike_movie
+                  type: mutate()
+                  params: mutation_unlike_movie
                   skip:
                     _not:
                       _state: results.$.liked_by_user
-                - set():
+                - id: set_like_item
+                  type: set()
+                  params:
                     results.$.liked_by_user:
                       _not:
                         _state: results.$.liked_by_user
@@ -111,7 +117,9 @@ blocks:
               icon: link
             actions:
               onClick:
-                - link():
+                - id: details
+                  type: link()
+                  params:
                     pageId: details
                     urlQuery:
                       _id:

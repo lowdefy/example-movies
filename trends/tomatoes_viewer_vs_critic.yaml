@@ -9,11 +9,15 @@ blocks:
       maxWidth: 600
     actions:
       onClick:
-        - set():
+        - id: on_chart_click
+          type: set()
+          params:
             tomatoes_viewer_vs_critic.selected: true
             tomatoes_viewer_vs_critic.selectedMovieIds:
               _args: target.dataItem.movieIds
-        - fetch(): req_tomatoes_viewer_vs_critic_lookup
+        - id: fetch_req_tomatoes_viewer_vs_critic_lookup
+          type: fetch()
+          params: req_tomatoes_viewer_vs_critic_lookup
     properties:
       data:
         _request: req_tomatoes_viewer_vs_critic
@@ -114,11 +118,15 @@ blocks:
       width: 600
     actions:
       onOk:
-        - set():
+        - id: reset_modal
+          type: set()
+          params:
             tomatoes_viewer_vs_critic.selected: false
             tomatoes_viewer_vs_critic.selectedMovieIds: []
       onCancel:
-        - set():
+        - id: reset_modal
+          type: set()
+          params:
             tomatoes_viewer_vs_critic.selected: false
             tomatoes_viewer_vs_critic.selectedMovieIds: []
     blocks:

@@ -35,7 +35,9 @@ mutations:
 
 actions:
   onInit:
-    - set():  
+    - id: set_defaults
+      type: set()
+      params:
         loading: false
         pagination:
           pageSize: 10

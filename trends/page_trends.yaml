@@ -6,7 +6,9 @@ properties:
 
 actions:
   onInit:
-    - set():  
+    - id: set_default
+      type: set()
+      params:
         tomatoes_viewer_vs_critic:
           selected: false
           selectedMovieIds: []

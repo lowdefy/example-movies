@@ -6,7 +6,9 @@ properties:
 
 actions:
   onInit:
-    - set():
+    - id: set_defaults
+      type: set()
+      params:
         rating_label: Award Wins
         rating_value: award_wins
 
