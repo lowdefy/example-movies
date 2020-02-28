@@ -82,12 +82,12 @@ blocks:
             actions:
               onClick:
                 - mutate(): mutation_like_movie
-                  call:
-                    _not:
+                  skip:
                       _state: results.$.liked_by_user
                 - mutate(): mutation_unlike_movie
-                  call:
-                    _state: results.$.liked_by_user
+                  skip:
+                    _not:
+                      _state: results.$.liked_by_user
                 - set():
                     results.$.liked_by_user:
                       _not:

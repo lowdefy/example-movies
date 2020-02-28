@@ -117,7 +117,7 @@ blocks:
       icon: filter
     actions:
       onClick:
-        - refresh(): true
+        - fetch(): true
         - set():
             rating_label:
               _nunjucks: |

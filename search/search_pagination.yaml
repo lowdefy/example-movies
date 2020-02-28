@@ -12,7 +12,7 @@ actions:
   onShowSizeChange:
     - set():
         loading: true
-    - refresh(): true
+    - fetch(): true
     - set():
         loading: false
         results:
@@ -20,7 +20,7 @@ actions:
   onChange:
     - set():
         loading: true
-    - refresh(): req_search
+    - fetch(): req_search
     - set():
         loading: false
         results:

@@ -13,7 +13,7 @@ blocks:
             tomatoes_viewer_vs_critic.selected: true
             tomatoes_viewer_vs_critic.selectedMovieIds:
               _args: target.dataItem.movieIds
-        - refresh(): req_tomatoes_viewer_vs_critic_lookup
+        - fetch(): req_tomatoes_viewer_vs_critic_lookup
     properties:
       data:
         _request: req_tomatoes_viewer_vs_critic
