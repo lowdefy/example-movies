@@ -33,13 +33,16 @@ mutations:
           liked_by:
             _user: id
 
-initialState:
-  loading: false
-  pagination:
-    pageSize: 10
-    skip: 0
-  results:
-    _request: req_search
+actions:
+  onInit:
+    - id: set_defaults
+      type: set()
+      params:
+        loading: false
+        pagination:
+          pageSize: 10
+          skip: 0
+        results: []
 blocks:
   - id: card_search
     type: card

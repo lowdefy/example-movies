@@ -4,9 +4,13 @@ public: true
 properties:
   title: Discover
 
-initialState:
-  rating_label: Award Wins
-  rating_value: award_wins
+actions:
+  onInit:
+    - id: set_defaults
+      type: set()
+      params:
+        rating_label: Award Wins
+        rating_value: award_wins
 
 requests:
   - _ref: discover/aggregations/req_filter_genres.yaml

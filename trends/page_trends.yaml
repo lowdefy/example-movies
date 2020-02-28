@@ -3,10 +3,15 @@ type: page_sider_menu
 public: true
 properties:
   title: Movie Trends
-initialState:
-  tomatoes_viewer_vs_critic:
-    selected: false
-    selectedMovieIds: []
+
+actions:
+  onInit:
+    - id: set_default
+      type: set()
+      params:
+        tomatoes_viewer_vs_critic:
+          selected: false
+          selectedMovieIds: []
 
 requests:
   - _ref: trends/aggregations/req_total_statistics.yaml

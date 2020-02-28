@@ -117,8 +117,11 @@ blocks:
       icon: filter
     actions:
       onClick:
-        - refresh(): true
-        - set():
+        - id: fetch_all
+          type: fetch()
+        - id: set_ratings
+          type: set()
+          params:
             rating_label:
               _nunjucks: |
                 {% if select_rating == 'imdb_rating' %}
@@ -144,4 +147,5 @@ blocks:
       icon: reload
     actions:
       onClick:
-        - reset(): true
+        - id: reset
+          type: reset()

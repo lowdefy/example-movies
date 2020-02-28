@@ -10,18 +10,29 @@ properties:
       key: 0.total
 actions:
   onShowSizeChange:
-    - set():
+    - id: set_loading
+      type: set()
+      params:
         loading: true
-    - refresh(): true
-    - set():
+    - id: fetch_all
+      type: fetch()
+    - id: set_results
+      type: set()
+      params:
         loading: false
         results:
           _request: req_search
   onChange:
-    - set():
+    - id: set_loading
+      type: set()
+      params:
         loading: true
-    - refresh(): req_search
-    - set():
+    - id: fetch_search
+      type: fetch()
+      params: req_search
+    - id: set_results
+      type: set()
+      params:
         loading: false
         results:
           _request: req_search
