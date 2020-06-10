@@ -10,7 +10,7 @@ blocks:
     properties:
       content: "### Run Time"
   - id: statistic_total_runtime_minutes
-    type: statistic
+    type: Statistic
     style:
       --span: 4
     properties:
@@ -26,7 +26,7 @@ blocks:
         fontWeight: bold
         fontSize: 40
   - id: statistic_max_runtime
-    type: statistic
+    type: Statistic
     style:
       --span: 4
     properties:
@@ -42,7 +42,7 @@ blocks:
         fontWeight: bold
         fontSize: 36
   - id: statistic_avg_runtime
-    type: statistic
+    type: Statistic
     style:
       --span: 4
     properties:

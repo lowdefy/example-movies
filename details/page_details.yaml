@@ -69,6 +69,7 @@ blocks:
           sm: 
             --span: 12
         properties:
+          renderHtml: true
           content:
             _nunjucks: |
               {% if _id %}
@@ -83,6 +84,7 @@ blocks:
           sm: 
             --span: 12
         properties:
+          renderHtml: true
           content:
             _nunjucks: |
               {% if _id %}
@@ -112,6 +114,7 @@ blocks:
       - id: comment_post_button
         type: Button
         properties:
+          block: true
           title: Post
         actions:
           onClick:
@@ -140,6 +143,7 @@ blocks:
           - id: comments.$.markdown
             type: Markdown
             properties:
+              renderHtml: true
               content:
                 _nunjucks:
                   on:

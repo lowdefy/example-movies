@@ -1,7 +1,7 @@
 id: card_statistics_tomatoes
 type: Card
 style:
-  --span: 4
+  --span: 5
   md:
     --span: 6
 blocks:
@@ -16,7 +16,7 @@ blocks:
       sm:
         --span: 6
     properties:
-      title: Average Audience Score
+      title: Avg Audience Score
       value:
         _get:
           key: 0.avg_tomatoes_viewer_meter
@@ -34,7 +34,7 @@ blocks:
       sm:
         --span: 6
     properties:
-      title: Average Tomatometer®
+      title: Avg Tomatometer®
       value:
         _get:
           key: 0.avg_tomatoes_critic_meter

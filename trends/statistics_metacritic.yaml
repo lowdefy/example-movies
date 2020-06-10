@@ -12,7 +12,7 @@ blocks:
   - id: statistic_metacritic_avg
     type: Statistic
     properties:
-      title: Average
+      title: Avg
       value:
         _get:
           key: 0.avg_metacritic_score

@@ -9,6 +9,7 @@ blocks:
   - id: grid_top_directors
     type: AgGrid
     properties:
+      theme: basic
       rowData:
         _request: req_top20_directors
       defaultColDef:

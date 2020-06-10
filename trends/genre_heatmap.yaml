@@ -6,7 +6,7 @@ blocks:
     style:
       --span: 2
   - id: chart_genre_heatmap
-    type: amcharts_4_xy
+    type: AmCharts4XY
     style:
       --span: 8
     properties:

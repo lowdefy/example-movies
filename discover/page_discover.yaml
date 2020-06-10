@@ -1,5 +1,5 @@
 id: discover
-type: page_sider_menu
+type: PageSiderMenu
 public: true
 properties:
   title: Discover

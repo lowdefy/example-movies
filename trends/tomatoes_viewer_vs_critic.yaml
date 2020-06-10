@@ -111,11 +111,11 @@ blocks:
         In general, the score given by audience members tends to be higher than the critic score. This can be seen since most points lie above the diagonal line, which is the line where both scores are equal. Click on the bubbles to see which movies are part of that bubble.
   - id: modal_tomatoes_viewer_vs_critic_lookup
     type: Modal
-    visible:
-      _state: tomatoes_viewer_vs_critic.selected
     properties:
       title: Rotten Tomatoes Viewer vs Critic Meters
-      width: 600
+      open: 
+        _state: tomatoes_viewer_vs_critic.selected
+      width: 950
     actions:
       onOk:
         - id: reset_modal
@@ -133,6 +133,7 @@ blocks:
       - id: table_tomatoes_viewer_vs_critic_lookup
         type: AgGrid
         properties:
+          theme: basic
           rowData:
             _request: req_tomatoes_viewer_vs_critic_lookup
           columnDefs:
@@ -144,14 +145,14 @@ blocks:
             - headerName: Year
               field: year
               width: 100
-            - headerName: Viewer Reviews
+            - headerName: Num Reviews
               field: viewer_reviews
-              width: 100
+              width: 150
             - headerName: Critic Meter
               field: critic_meter
-              width: 100
+              width: 150
             - headerName: Viewer Meter
               field: viewer_meter
-              width: 100
+              width: 150
           defaultColDef:
             sortable: true

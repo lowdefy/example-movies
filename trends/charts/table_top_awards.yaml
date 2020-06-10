@@ -6,6 +6,7 @@ blocks:
   - id: table_top_awards
     type: AgGrid
     properties:
+      theme: basic
       rowData:
         _request: req_top_awards
       columnDefs:

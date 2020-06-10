@@ -1,14 +1,14 @@
 id: card_statistics_imdb
 type: Card
 style:
-  --span: 5
+  --span: 4
   md: 
     --span: 6
 blocks:
   - id: statistic_imdb_title
     type: Markdown
     properties:
-      content: "### IMDb Ratings 123"
+      content: "### IMDb Ratings"
   - id: statistic_imdb_max
     type: Statistic
     style:
@@ -52,7 +52,7 @@ blocks:
       sm:
         --span: 4
     properties:
-      title: Average
+      title: Avg
       value:
         _get:
           key: 0.avg_imdb_rating

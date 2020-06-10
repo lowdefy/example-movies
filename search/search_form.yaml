@@ -25,6 +25,7 @@ blocks:
       Icon: SearchOutlined
       size: large
       block: true
+      hideActionLoading: true
     actions:
       onClick:
         - id: set_loading

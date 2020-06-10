@@ -71,8 +71,13 @@ blocks:
                 --span: 3
               align: center
             properties:
+              hideActionLoading: true
               title:
-                _state: results.$.likes
+                _nunjucks: 
+                  template: '{{ likes }}'
+                  on:
+                    likes:
+                      _state: results.$.likes
               Icon:
                 _mql_expr:
                   "$cond":
