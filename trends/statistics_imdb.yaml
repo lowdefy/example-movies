@@ -1,26 +1,26 @@
 id: card_statistics_imdb
-type: card
-box:
-  span: 5
+type: Card
+style:
+  --span: 5
   md: 
-    span: 6
+    --span: 6
 blocks:
   - id: statistic_imdb_title
-    type: markdown
+    type: Markdown
     properties:
       content: "### IMDb Ratings 123"
   - id: statistic_imdb_max
-    type: statistic
-    box:
-      span: 4
+    type: Statistic
+    style:
+      --span: 4
       sm:
-        span: 4
+        --span: 4
     properties:
       title: Max
       value:
         _get:
           key: 0.max_imdb_rating
-          on:
+          from:
             _request: req_total_statistics
       precision: 1
       valueStyle:
@@ -28,17 +28,17 @@ blocks:
         fontSize: 40
       suffixIcon: star
   - id: statistic_imdb_min
-    type: statistic
-    box:
-      span: 4
+    type: Statistic
+    style:
+      --span: 4
       sm:
-        span: 4
+        --span: 4
     properties:
       title: Min
       value:
         _get:
           key: 0.min_imdb_rating
-          on:
+          from:
             _request: req_total_statistics
       precision: 1
       valueStyle:
@@ -46,17 +46,17 @@ blocks:
         fontSize: 40
       suffixIcon: star
   - id: statistic_imdb_avg
-    type: statistic
-    box:
-      span: 4
+    type: Statistic
+    style:
+      --span: 4
       sm:
-        span: 4
+        --span: 4
     properties:
       title: Average
       value:
         _get:
           key: 0.avg_imdb_rating
-          on:
+          from:
             _request: req_total_statistics
       precision: 1
       valueStyle:

@@ -1,5 +1,5 @@
 id: trends
-type: page_sider_menu
+type: PageSiderMenu
 public: true
 properties:
   title: Movie Trends
@@ -7,7 +7,7 @@ properties:
 actions:
   onInit:
     - id: set_default
-      type: set()
+      type: setState()
       params:
         tomatoes_viewer_vs_critic:
           selected: false

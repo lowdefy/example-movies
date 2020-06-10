@@ -3,19 +3,19 @@ config:
 
 connections:
   - id: mongodb_mflix_comments
-    type: mongodb_collection
+    type: MongoDBCollection
     properties:
       databaseUri:
-        _secret: mongodb_mflix_uri
+        _secret: mongodb_mflix_movies
       databaseName: sample_mflix
       collection: comments
       read: true
       write: true
   - id: mongodb_mflix_movies
-    type: mongodb_collection
+    type: MongoDBCollection
     properties:
       databaseUri:
-        _secret: mongodb_mflix_uri
+        _secret: mongodb_mflix_movies
       databaseName: sample_mflix
       collection: movies
       read: true
@@ -25,23 +25,23 @@ menus:
   - id: main_menu
     links:
       - id: menu_search
-        type: menu_link
+        type: MenuLink
         pageId: search
         properties:
           title: Movie Lookup
-          icon: search
+          Icon: SearchOutlined
       - id: menu_trends
-        type: menu_link
+        type: MenuLink
         pageId: trends
         properties:
           title: Trends
-          icon: area-chart
+          Icon: AreaChartOutlined
       - id: menu_discover
-        type: menu_link
+        type: MenuLink
         pageId: discover
         properties:
           title: Discover
-          icon: compass
+          Icon: CompassOutlined
           
 pages:
   - _ref: search/page_search.yaml

@@ -1,5 +1,5 @@
 id: req_tomatoes_viewer_vs_critic_lookup
-type: mongodb_aggregation
+type: MongoDBAggregation
 connectionId: mongodb_mflix_movies
 properties:
   pipeline:

@@ -1,37 +1,37 @@
 id: pagination
-type: pagination_input
+type: Pagination
 properties:
   showSizeChanger: true
   showTotal: true
   total:
     _get:
-      on:
+      from:
         _request: req_total
       key: 0.total
 actions:
   onShowSizeChange:
     - id: set_loading
-      type: set()
+      type: setState()
       params:
         loading: true
     - id: fetch_all
       type: fetch()
     - id: set_results
-      type: set()
+      type: setState()
       params:
         loading: false
         results:
           _request: req_search
   onChange:
     - id: set_loading
-      type: set()
+      type: setState()
       params:
         loading: true
     - id: fetch_search
       type: fetch()
       params: req_search
     - id: set_results
-      type: set()
+      type: setState()
       params:
         loading: false
         results:

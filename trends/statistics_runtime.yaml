@@ -1,24 +1,24 @@
 id: card_statistics_runtime
-type: card
-box:
-  span: 8
+type: Card
+style:
+  --span: 8
   md: 
-    span: 12
+    --span: 12
 blocks:
   - id: statistic_runtime_title
-    type: markdown
+    type: Markdown
     properties:
       content: "### Run Time"
   - id: statistic_total_runtime_minutes
     type: statistic
-    box:
-      span: 4
+    style:
+      --span: 4
     properties:
       title: Total
       value:
         _get:
           key: 0.total_runtime_years
-          on:
+          from:
             _request: req_total_statistics
       precision: 1
       suffix: years
@@ -27,14 +27,14 @@ blocks:
         fontSize: 40
   - id: statistic_max_runtime
     type: statistic
-    box:
-      span: 4
+    style:
+      --span: 4
     properties:
       title: Max
       value:
         _get:
           key: 0.max_runtime
-          on:
+          from:
             _request: req_total_statistics
       precision: 0
       suffix: minutes
@@ -43,14 +43,14 @@ blocks:
         fontSize: 36
   - id: statistic_avg_runtime
     type: statistic
-    box:
-      span: 4
+    style:
+      --span: 4
     properties:
       title: Average
       value:
         _get:
           key: 0.avg_runtime
-          on:
+          from:
             _request: req_total_statistics
       precision: 0
       suffix: minutes

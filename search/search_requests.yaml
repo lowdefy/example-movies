@@ -1,5 +1,5 @@
 - id: req_total
-  type: mongodb_aggregation
+  type: MongoDBAggregation
   connectionId: mongodb_mflix_movies
   properties:
     pipeline:
@@ -9,7 +9,7 @@
               _nunjucks: "{{ search }}"
       - $count: total
 - id: req_search
-  type: mongodb_aggregation
+  type: MongoDBAggregation
   connectionId: mongodb_mflix_movies
   properties:
     pipeline:

@@ -1,22 +1,22 @@
 id: card_statistics_total_movies
-type: card
-box:
-  span: 4
+type: Card
+style:
+  --span: 4
   md:
-    span: 6
+    --span: 6
 blocks:
   - id: statistic_total_movies_title
-    type: markdown
+    type: Markdown
     properties:
       content: "### Dataset Size"
   - id: statistic_total_movies
-    type: statistic
+    type: Statistic
     properties:
       title: Count
       value:
         _get:
           key: 0.total
-          on:
+          from:
             _request: req_total_statistics
       precision: 0
       groupSeparator: " "

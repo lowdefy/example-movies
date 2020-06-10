@@ -1,34 +1,34 @@
 $match:
-        $expr:
-          $and:
+    $expr:
+        $and:
+        - $eq:
+            - $type
+            - movie
+        - $or:
             - $eq:
-                - $type
-                - movie
-            - $or:
-                - $eq:
-                    - _state: 
-                        radio_button_time_period
-                    - full_history
-                - $and:
-                    - $lte:
-                        - $year
+                - _state: 
+                    radio_button_time_period
+                - full_history
+            - $and:
+                - $lte:
+                    - $year
+                    - _state:
+                        select_decade_to
+                - $gte:
+                    - $year
+                    - _state:
+                        select_decade_from
+        - $or:
+            - $eq:
+                - _state: 
+                    radio_button_genres
+                - all_genres
+            - $gt:
+                - $size:
+                    $setIntersection:
+                        - $ifNull:
+                            - $genres
+                            - []
                         - _state:
-                            select_decade_to
-                    - $gte:
-                        - $year
-                        - _state:
-                            select_decade_from
-            - $or:
-                - $eq:
-                    - _state: 
-                        radio_button_genres
-                    - all_genres
-                - $gt:
-                    - $size:
-                        $setIntersection:
-                          - $ifNull:
-                              - $genres
-                              - []
-                          - _state:
-                              multiple_select_genres
-                    - 0
+                            multiple_select_genres
+                - 0

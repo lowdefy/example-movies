@@ -7,7 +7,7 @@ properties:
 actions:
   onInit:
     - id: set_defaults
-      type: set()
+      type: setState()
       params:
         rating_label: Award Wins
         rating_value: award_wins
@@ -23,7 +23,7 @@ requests:
 blocks:
   - _ref: discover/discover_filter_form.yaml
   - id: card_top
-    type: card
+    type: Card
     properties:
       title:
         _nunjucks: |
