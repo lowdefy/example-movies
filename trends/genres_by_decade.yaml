@@ -14,6 +14,8 @@ blocks:
             category: decade
             title:
               text: Decade
+          renderer:
+            minGridDistance: 40
       yAxes:
         - type: ValueAxis
           calculateTotals: true
