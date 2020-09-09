@@ -6,14 +6,14 @@ properties:
 actions:
   onInit:
     - id: set_url
-      type: setState()
+      type: SetState
       params:
         _id: 
           _url_query: _id
     - id: fetch_all
-      type: fetch()
+      type: Fetch
     - id: set_results
-      type: setState()
+      type: SetState
       params:
         details:
           _request: req_movie_details
@@ -47,8 +47,8 @@ mutations:
       doc:
         movie_id:
           _state: _id
-        id:
-          _user: fullName
+        name:
+          _user: name
         user_id:
           _user: id
         text:
@@ -59,18 +59,21 @@ mutations:
 blocks:
   - id: details_card
     type: Card
+    layout:
+      contentGutter: 16
     style:
       minHeight: 300
     blocks:
       - id: poster
-        type: Markdown
-        style:
-          --span: 4
-          sm: 
-            --span: 12
+        type: Html
+        layout:
+          span: 8
+        # style:
+        #   --span: 4
+        #   sm: 
+        #     --span: 12
         properties:
-          renderHtml: true
-          content:
+          html:
             _nunjucks: |
               {% if _id %}
               <div style="height: 400px" >
@@ -79,10 +82,12 @@ blocks:
               {% endif %}
       - id: content
         type: Markdown
-        style:
-          --span: 8
-          sm: 
-            --span: 12
+        layout:
+          span: 16
+        # style:
+        #   --span: 8
+        #   sm: 
+        #     --span: 12
         properties:
           renderHtml: true
           content:
@@ -119,10 +124,10 @@ blocks:
         actions:
           onClick:
             - id: mutation_post_comment
-              type: mutate()
+              type: Mutate
               params: mutation_post_comment
             - id: set_post_comment
-              type: setState()
+              type: SetState
               params:
                 comments:
                   _mql_expr:
@@ -150,5 +155,5 @@ blocks:
                     _state: comments.$
                   template: |
                     ### {{ name }}
-                    {{ text }}
+                    {{ text }}<br/>
                     {{ date | date('D MMM, YYYY') }}

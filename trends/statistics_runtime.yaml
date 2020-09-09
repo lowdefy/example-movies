@@ -1,9 +1,11 @@
 id: card_statistics_runtime
 type: Card
-style:
-  --span: 8
-  md: 
-    --span: 12
+layout:
+  span: 16
+# style:
+#   --span: 8
+#   md: 
+#     --span: 12
 blocks:
   - id: statistic_runtime_title
     type: Markdown
@@ -11,8 +13,10 @@ blocks:
       content: "### Run Time"
   - id: statistic_total_runtime_minutes
     type: Statistic
-    style:
-      --span: 4
+    layout:
+      span: 8
+    # style:
+    #   --span: 4
     properties:
       title: Total
       value:
@@ -27,8 +31,10 @@ blocks:
         fontSize: 40
   - id: statistic_max_runtime
     type: Statistic
-    style:
-      --span: 4
+    layout:
+      span: 8
+    # style:
+    #   --span: 4
     properties:
       title: Max
       value:
@@ -43,8 +49,10 @@ blocks:
         fontSize: 36
   - id: statistic_avg_runtime
     type: Statistic
-    style:
-      --span: 4
+    layout:
+      span: 8
+    # style:
+    #   --span: 4
     properties:
       title: Average
       value:

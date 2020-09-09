@@ -1,9 +1,11 @@
 id: card_statistics_total_movies
 type: Card
-style:
-  --span: 4
-  md:
-    --span: 6
+layout:
+  span: 8
+# style:
+#   --span: 4
+#   md:
+#     --span: 6
 blocks:
   - id: statistic_total_movies_title
     type: Markdown
