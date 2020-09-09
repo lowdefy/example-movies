@@ -11,27 +11,27 @@ properties:
 actions:
   onShowSizeChange:
     - id: set_loading
-      type: setState()
+      type: SetState
       params:
         loading: true
     - id: fetch_all
-      type: fetch()
+      type: Fetch
     - id: set_results
-      type: setState()
+      type: SetState
       params:
         loading: false
         results:
           _request: req_search
   onChange:
     - id: set_loading
-      type: setState()
+      type: SetState
       params:
         loading: true
     - id: fetch_search
-      type: fetch()
+      type: Fetch
       params: req_search
     - id: set_results
-      type: setState()
+      type: SetState
       params:
         loading: false
         results:

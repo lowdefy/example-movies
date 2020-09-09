@@ -1,62 +1,86 @@
 id: form_container
 type: Box
+layout:
+  contentGutter: 16
 blocks:
   - id: search
     type: TextInput
-    style:
-      --span: 8
-      md: 
-        --span: 12
+    layout:
+      span: 16
+    # style:
+    #   --span: 8
+    #   md: 
+    #     --span: 12
     properties:
       title: ""
       size: large
       placeholder: What did you come here looking for? 🤩
+    actions:
+      onPressEnter:
+        - id: set_loading
+          type: SetState
+          params:
+            loading: true
+            page.page: 1
+            page.skip: 0
+        - id: fetch_all
+          type: Fetch
+        - id: reset_loading
+          type: SetState
+          params:
+            loading: false
+            results:
+              _request: req_search
   - id: search_button
     type: Button
-    style:
-      --span: 2
-      sm: 
-        --span: 7
-      md: 
-        --span: 8
+    layout:
+      span: 4
+    # style:
+    #   --span: 2
+    #   sm: 
+    #     --span: 7
+    #   md: 
+    #     --span: 8
     properties:
       title: Search
       keyCode: 13
-      Icon: SearchOutlined
+      icon: SearchOutlined
       size: large
       block: true
       hideActionLoading: true
     actions:
       onClick:
         - id: set_loading
-          type: setState()
+          type: SetState
           params:
             loading: true
             page.page: 1
             page.skip: 0
         - id: fetch_all
-          type: fetch()
+          type: Fetch
         - id: reset_loading
-          type: setState()
+          type: SetState
           params:
             loading: false
             results:
               _request: req_search
   - id: reset_button
     type: Button
-    style:
-      --span: 2
-      sm: 
-        --span: 5
-      md: 
-        --span: 4
+    layout:
+      span: 4
+    # style:
+    #   --span: 2
+    #   sm: 
+    #     --span: 5
+    #   md: 
+    #     --span: 4
     properties:
       title: Reset
       type: default
-      Icon: ReloadOutlined
+      icon: ReloadOutlined
       size: large
       block: true
     actions:
       onClick:
         - id: reset
-          type: reset()
+          type: Reset

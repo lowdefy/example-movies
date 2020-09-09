@@ -1,9 +1,11 @@
 id: card_statistics_metacritic
 type: Card
-style:
-  --span: 3
-  md: 
-    --span: 6
+layout:
+  span: 6
+# style:
+#   --span: 3
+#   md: 
+#     --span: 6
 blocks:
   - id: statistic_metacritic_title
     type: Markdown

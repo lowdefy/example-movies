@@ -1,7 +1,7 @@
 id: card_tomatoes_viewer_vs_critic
 type: Card
-style:
-  justifyItems: center
+layout:
+  contentJustify: center
 blocks:
   - id: chart_tomatoes_viewer_vs_critic
     type: AmCharts4XY
@@ -10,13 +10,13 @@ blocks:
     actions:
       onClick:
         - id: on_chart_click
-          type: setState()
+          type: SetState
           params:
             tomatoes_viewer_vs_critic.selected: true
             tomatoes_viewer_vs_critic.selectedMovieIds:
               _args: target.dataItem.movieIds
         - id: fetch_req_tomatoes_viewer_vs_critic_lookup
-          type: fetch()
+          type: Fetch
           params: req_tomatoes_viewer_vs_critic_lookup
     properties:
       data:
@@ -119,13 +119,13 @@ blocks:
     actions:
       onOk:
         - id: reset_modal
-          type: setState()
+          type: SetState
           params:
             tomatoes_viewer_vs_critic.selected: false
             tomatoes_viewer_vs_critic.selectedMovieIds: []
       onCancel:
         - id: reset_modal
-          type: setState()
+          type: SetState
           params:
             tomatoes_viewer_vs_critic.selected: false
             tomatoes_viewer_vs_critic.selectedMovieIds: []

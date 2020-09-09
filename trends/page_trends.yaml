@@ -3,11 +3,13 @@ type: PageSiderMenu
 public: true
 properties:
   title: Movie Trends
+layout:
+  contentGutter: 16
 
 actions:
   onInit:
     - id: set_default
-      type: setState()
+      type: SetState
       params:
         tomatoes_viewer_vs_critic:
           selected: false

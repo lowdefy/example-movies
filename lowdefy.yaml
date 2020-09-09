@@ -6,7 +6,7 @@ connections:
     type: MongoDBCollection
     properties:
       databaseUri:
-        _secret: mongodb_mflix_movies
+        _secret: lowdefy_examples_mdb
       databaseName: sample_mflix
       collection: comments
       read: true
@@ -15,33 +15,33 @@ connections:
     type: MongoDBCollection
     properties:
       databaseUri:
-        _secret: mongodb_mflix_movies
+        _secret: lowdefy_examples_mdb
       databaseName: sample_mflix
       collection: movies
       read: true
       write: true
 
 menus:
-  - id: main_menu
+  - id: default
     links:
       - id: menu_search
         type: MenuLink
         pageId: search
         properties:
           title: Movie Lookup
-          Icon: SearchOutlined
+          icon: SearchOutlined
       - id: menu_trends
         type: MenuLink
         pageId: trends
         properties:
           title: Trends
-          Icon: AreaChartOutlined
+          icon: AreaChartOutlined
       - id: menu_discover
         type: MenuLink
         pageId: discover
         properties:
           title: Discover
-          Icon: CompassOutlined
+          icon: CompassOutlined
           
 pages:
   - _ref: search/page_search.yaml

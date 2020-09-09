@@ -1,9 +1,11 @@
 id: card_statistics_imdb
 type: Card
-style:
-  --span: 4
-  md: 
-    --span: 6
+layout:
+  span: 8
+# style:
+#   --span: 4
+#   md: 
+#     --span: 6
 blocks:
   - id: statistic_imdb_title
     type: Markdown
@@ -11,10 +13,12 @@ blocks:
       content: "### IMDb Ratings"
   - id: statistic_imdb_max
     type: Statistic
-    style:
-      --span: 4
-      sm:
-        --span: 4
+    layout:
+      span: 8
+    # style:
+    #   --span: 4
+    #   sm:
+    #     --span: 4
     properties:
       title: Max
       value:
@@ -26,13 +30,15 @@ blocks:
       valueStyle:
         fontWeight: bold
         fontSize: 40
-      suffixIcon: star
+      suffixIcon: StarOutlined
   - id: statistic_imdb_min
     type: Statistic
-    style:
-      --span: 4
-      sm:
-        --span: 4
+    layout:
+      span: 8
+    # style:
+    #   --span: 4
+    #   sm:
+    #     --span: 4
     properties:
       title: Min
       value:
@@ -44,13 +50,15 @@ blocks:
       valueStyle:
         fontWeight: bold
         fontSize: 40
-      suffixIcon: star
+      suffixIcon: StarOutlined
   - id: statistic_imdb_avg
     type: Statistic
-    style:
-      --span: 4
-      sm:
-        --span: 4
+    layout:
+      span: 8
+    # style:
+    #   --span: 4
+    #   sm:
+    #     --span: 4
     properties:
       title: Avg
       value:
@@ -62,4 +70,4 @@ blocks:
       valueStyle:
         fontWeight: bold
         fontSize: 40
-      suffixIcon: star
+      suffixIcon: StarOutlined

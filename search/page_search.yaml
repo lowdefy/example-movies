@@ -34,9 +34,9 @@ mutations:
             _user: id
 
 actions:
-  onInit:
+  onEnter:
     - id: set_defaults
-      type: setState()
+      type: SetState
       params:
         loading: false
         pagination:
@@ -46,6 +46,8 @@ actions:
 blocks:
   - id: card_search
     type: Card
+    layout:
+      contentGutter: 16
     properties:
       title: Search for a movie or actor
     blocks:

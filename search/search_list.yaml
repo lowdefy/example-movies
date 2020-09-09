@@ -23,10 +23,12 @@ blocks:
     blocks:
       - id: results.$.poster
         type: Markdown
-        style:
-          --span: 2
-          sm: 
-            --span: 4
+        layout:
+          span: 4
+        # style:
+        #   --span: 2
+        #   sm: 
+        #     --span: 4
         properties:
           renderHtml: true
           content:
@@ -43,10 +45,13 @@ blocks:
                 _state: results.$
       - id: results.$.content
         type: Box
-        style:
-          --span: 10
-          sm: 
-            --span: 8
+        layout:
+          contentGutter: 16
+          span: 20
+        # style:
+        #   --span: 10
+        #   sm: 
+        #     --span: 8
         blocks:
           - id: results.$.description
             type: Markdown
@@ -64,11 +69,13 @@ blocks:
                     {{ plot }}
           - id: results.$.like_anchor
             type: Anchor
+            layout:
+              span: 4
             style:
               fontSize: 17px
-              --span: 2
-              sm: 
-                --span: 3
+              # --span: 2
+              # sm: 
+              #   --span: 3
               align: center
             properties:
               hideActionLoading: true
@@ -78,7 +85,7 @@ blocks:
                   on:
                     likes:
                       _state: results.$.likes
-              Icon:
+              icon:
                 _mql_expr:
                   "$cond":
                     - _state: "results.$.liked_by_user"
@@ -87,18 +94,18 @@ blocks:
             actions:
               onClick:
                 - id: mutation_like_movie
-                  type: mutate()
+                  type: Mutate
                   params: mutation_like_movie
                   skip:
                     _state: results.$.liked_by_user
                 - id: mutation_unlike_movie
-                  type: mutate()
+                  type: Mutate
                   params: mutation_unlike_movie
                   skip:
                     _not:
                       _state: results.$.liked_by_user
                 - id: set_like_item
-                  type: setState()
+                  type: SetState
                   params:
                     results.$.liked_by_user:
                       _not:
@@ -113,31 +120,34 @@ blocks:
                               - 1
           - id: results.$.view_anchor
             type: Anchor
-            style:
-              --span: 2
-              sm: 
-                --span: 4
+            layout:
+              span: 4
+            # style:
+            #   --span: 2
+            #   sm: 
+            #     --span: 4
             properties:
               title: View Details
-              Icon: LinkOutlined
+              icon: LinkOutlined
             actions:
               onClick:
                 - id: details
-                  type: link()
+                  type: Link
                   params:
                     pageId: details
                     urlQuery:
                       _id:
                         _state: results.$._id
           - id: results.$.rating
-            type: Markdown
-            style:
-              --span: 8
-              sm: 
-                span: 12
+            type: Html
+            layout:
+              span: 16
+            # style:
+            #   --span: 8
+            #   sm: 
+            #     span: 12
             properties:
-              renderHtml: true
-              content:
+              html:
                 _nunjucks:
                   on:
                     _state: results.$
