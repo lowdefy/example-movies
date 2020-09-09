@@ -1,5 +1,5 @@
 id: search
-type: page_header_menu
+type: PageHeaderMenu
 public: true
 properties:
   title: Movie Search 🔎
@@ -7,7 +7,7 @@ requests:
   _ref: search/search_requests.yaml
 mutations:
   - id: mutation_like_movie
-    type: mongodb_update_one
+    type: MongoDBUpdateOne
     connectionId: mongodb_mflix_movies
     properties:
       filter:
@@ -20,7 +20,7 @@ mutations:
           liked_by:
             _user: id
   - id: mutation_unlike_movie
-    type: mongodb_update_one
+    type: MongoDBUpdateOne
     connectionId: mongodb_mflix_movies
     properties:
       filter:
@@ -36,7 +36,7 @@ mutations:
 actions:
   onInit:
     - id: set_defaults
-      type: set()
+      type: setState()
       params:
         loading: false
         pagination:
@@ -45,7 +45,7 @@ actions:
         results: []
 blocks:
   - id: card_search
-    type: card
+    type: Card
     properties:
       title: Search for a movie or actor
     blocks:

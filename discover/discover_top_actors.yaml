@@ -1,14 +1,15 @@
 id: column_top_actors
-type: grid
+type: Box
 blocks:
   - id: title_top_actors
-    type: markdown
+    type: Markdown
     properties:
       content: |
         ### Actors
   - id: grid_top_actors
-    type: ag_grid
+    type: AgGrid
     properties:
+      theme: basic
       rowData:
         _request: req_top20_actors
       defaultColDef:

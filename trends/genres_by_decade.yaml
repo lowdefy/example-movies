@@ -1,8 +1,8 @@
 id: card_genre_by_decade_stacked
-type: card
+type: Card
 blocks:
   - id: chart_genres_by_decade
-    type: amcharts_4_xy
+    type: AmCharts4XY
     properties:
       data:
         _request: req_genres_by_decade
@@ -44,7 +44,7 @@ blocks:
       numberFormatter:
         numberFormat: "#."
   - id: markdown_genres_by_decade
-    type: markdown
+    type: Markdown
     properties:
       content: |
         ### Genre Ratio by Decade

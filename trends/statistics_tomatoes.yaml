@@ -1,26 +1,26 @@
 id: card_statistics_tomatoes
-type: card
-box:
-  span: 4
+type: Card
+style:
+  --span: 5
   md:
-    span: 6
+    --span: 6
 blocks:
   - id: statistic_tomatoes_title
-    type: markdown
+    type: Markdown
     properties:
       content: "### Rotten Tomatoes"
   - id: statistic_tomatoes_viewer_avg
-    type: statistic
-    box:
-      span: 6
+    type: Statistic
+    style:
+      --span: 6
       sm:
-        span: 6
+        --span: 6
     properties:
-      title: Average Audience Score
+      title: Avg Audience Score
       value:
         _get:
           key: 0.avg_tomatoes_viewer_meter
-          on:
+          from:
             _request: req_total_statistics
       precision: 0
       valueStyle:
@@ -28,17 +28,17 @@ blocks:
         fontSize: 40
       suffix: "%"
   - id: statistic_tomatoes_critic_avg
-    type: statistic
-    box:
-      span: 6
+    type: Statistic
+    style:
+      --span: 6
       sm:
-        span: 6
+        --span: 6
     properties:
-      title: Average Tomatometer®
+      title: Avg Tomatometer®
       value:
         _get:
           key: 0.avg_tomatoes_critic_meter
-          on:
+          from:
             _request: req_total_statistics
       precision: 0
       valueStyle:

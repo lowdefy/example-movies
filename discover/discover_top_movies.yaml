@@ -1,14 +1,15 @@
 id: column_top_movies
-type: grid
+type: Box
 blocks:
   - id: title_top_movies
-    type: markdown
+    type: Markdown
     properties:
       content: |
         ### Movies
   - id: grid_top_movies
-    type: ag_grid
+    type: AgGrid
     properties:
+      theme: basic
       rowData:
         _request: req_top20_titles
       defaultColDef:

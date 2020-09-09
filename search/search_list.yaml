@@ -1,11 +1,11 @@
 id: results
-type: list
+type: ControlledList
 properties:
   hideAddButton: true
   hideRemoveButton: true
 blocks:
   - id: results.$.skeleton
-    type: skeleton
+    type: Skeleton
     properties:
       active: true
       avatar:
@@ -16,18 +16,19 @@ blocks:
     visible:
       _state: loading
   - id: results.$.item
-    type: grid
+    type: Box
     visible:
       _not:
         _state: loading
     blocks:
       - id: results.$.poster
-        type: markdown
-        box:
-          span: 2
+        type: Markdown
+        style:
+          --span: 2
           sm: 
-            span: 4
+            --span: 4
         properties:
+          renderHtml: true
           content:
             _nunjucks:
               template: |
@@ -41,15 +42,16 @@ blocks:
               on:
                 _state: results.$
       - id: results.$.content
-        type: grid
-        box:
-          span: 10
+        type: Box
+        style:
+          --span: 10
           sm: 
-            span: 8
+            --span: 8
         blocks:
           - id: results.$.description
-            type: markdown
+            type: Markdown
             properties:
+              renderHtml: true
               content:
                 _nunjucks:
                   on:
@@ -61,24 +63,27 @@ blocks:
 
                     {{ plot }}
           - id: results.$.like_anchor
-            type: anchor
-            box:
-              span: 2
+            type: Anchor
+            style:
+              fontSize: 17px
+              --span: 2
               sm: 
-                span: 3
+                --span: 3
               align: center
             properties:
+              hideActionLoading: true
               title:
-                _state: results.$.likes
-              style:
-                fontSize: 17px
-              icon: heart
-              iconTheme:
+                _nunjucks: 
+                  template: '{{ likes }}'
+                  on:
+                    likes:
+                      _state: results.$.likes
+              Icon:
                 _mql_expr:
                   "$cond":
                     - _state: "results.$.liked_by_user"
-                    - "filled"
-                    - "outlined"
+                    - "HeartFilled"
+                    - "HeartOutlined"
             actions:
               onClick:
                 - id: mutation_like_movie
@@ -93,7 +98,7 @@ blocks:
                     _not:
                       _state: results.$.liked_by_user
                 - id: set_like_item
-                  type: set()
+                  type: setState()
                   params:
                     results.$.liked_by_user:
                       _not:
@@ -107,14 +112,14 @@ blocks:
                               - -1
                               - 1
           - id: results.$.view_anchor
-            type: anchor
-            box:
-              span: 2
+            type: Anchor
+            style:
+              --span: 2
               sm: 
-                span: 4
+                --span: 4
             properties:
               title: View Details
-              icon: link
+              Icon: LinkOutlined
             actions:
               onClick:
                 - id: details
@@ -125,12 +130,13 @@ blocks:
                       _id:
                         _state: results.$._id
           - id: results.$.rating
-            type: markdown
-            box:
-              span: 8
+            type: Markdown
+            style:
+              --span: 8
               sm: 
                 span: 12
             properties:
+              renderHtml: true
               content:
                 _nunjucks:
                   on:

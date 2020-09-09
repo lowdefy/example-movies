@@ -1,5 +1,5 @@
 id: req_filter_end_decade
-type: mongodb_aggregation
+type: MongoDBAggregation
 connectionId: mongodb_mflix_movies
 properties:
   pipeline:

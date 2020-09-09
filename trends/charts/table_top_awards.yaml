@@ -1,11 +1,12 @@
 id: top_awards_card
-type: card
+type: Card
 properties:
   title: Top Awards
 blocks:
   - id: table_top_awards
-    type: ag_grid
+    type: AgGrid
     properties:
+      theme: basic
       rowData:
         _request: req_top_awards
       columnDefs:

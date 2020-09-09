@@ -1,151 +1,167 @@
 id: card_filter
-type: card
+type: Card
 properties:
   title: Filter
 blocks:
-  - id: select_rating
-    type: select_input
-    box:
-      span: 2
-    defaultValue: award_wins
-    properties:
-      title: Rating
-      options:
-        - label: Award Wins
-          value: award_wins
-        - label: Award Nominations
-          value: award_nominations
-        - label: IMDb Rating
-          value: imdb_rating
-        - label: Tomatometer®
-          value: tomatoes_critic_meter
-        - label: Tomatoes Audience Score
-          value: tomatoes_viewer_meter
-        # - label: Number of Movies
-        #   value: count
-  - id: column_time_period
-    type: grid
-    box:
-      span: 5
-    blocks:
-      - id: radio_button_time_period
-        type: radio_input
-        box:
-          span: 4
-        defaultValue: full_history
-        properties:
-          title: Select time period
-          options:
-            - label: Full History
-              value: full_history
-            - label: Select period
-              value: select_period
-      - id: select_decade_from
-        type: select_input
-        box:
-          span: 4
-        visible:
-          _mql_test:
-            radio_button_time_period: select_period
-        defaultValue: 1940
-        properties:
-          title: "From"
-          options:
-            _request: req_filter_start_decade
-      - id: select_decade_to
-        type: select_input
-        box:
-          span: 4
-        visible:
-          _mql_test:
-            radio_button_time_period: select_period
-        defaultValue: 2020
-        properties:
-          title: "To"
-          options:
-            _request: req_filter_end_decade
-  - id: column_genres
-    type: grid
-    box:
-      span: 5
-    blocks:
-      - id: radio_button_genres
-        type: radio_input
-        box:
-          span: 4
-        defaultValue: all_genres
-        properties:
-          title: Select Genres
-          options:
-            - label: All Genres
-              value: all_genres
-            - label: Select
-              value: select_genre
-      - id: multiple_select_genres
-        type: multiple_select_input
-        box:
-          span: 8
-        visible:
-          _mql_test:
-            radio_button_genres: select_genre
-        properties:
-          title: Genres
-          placeholder: Select genres
-          showSearch: true
-          options:
-            _request: req_filter_genres
-  - id: slider_tomatoes_reviews
-    type: slider_input
-    properties:
-      title: Minimum number of Rotten Tomato Critic Reviews
-      label:
-        colon: false
-      min: 0
-      max: 330
-      step: 10
-      disableIcons: true
-      showDots: false
-      marks:
-        0: "0"
-        330: "330"
-  - id: button_apply
-    type: button
-    box:
-      span: 8
-    properties:
-      title: Apply Filter
-      icon: filter
-    actions:
-      onClick:
-        - id: fetch_all
-          type: fetch()
-        - id: set_ratings
-          type: set()
-          params:
-            rating_label:
-              _nunjucks: |
-                {% if select_rating == 'imdb_rating' %}
-                  IMDb Rating
-                {% elif select_rating == 'tomatoes_critic_meter' %}
-                  Tomatometer®
-                {% elif select_rating == 'tomatoes_viewer_meter' %}
-                  Tomatoes Audience Score
-                {% elif select_rating == 'award_wins' %}
-                  Award Wins
-                {% elif select_rating == 'award_nominations' %}
-                  Award Nominations
-                {% endif %}
-            rating_value:
-              _state: select_rating
-  - id: button_reset
-    type: button
-    box:
-      span: 4
-    properties:
-      title: Reset
-      type: normal
-      icon: reload
-    actions:
-      onClick:
-        - id: reset
-          type: reset()
+  Content:
+    - id: select_rating
+      type: Selector
+      style:
+        --span: 2
+      defaultValue: award_wins
+      properties:
+        title: Rating
+        Label:
+          inline: true
+        options:
+          - label: Award Wins
+            value: award_wins
+          - label: Award Nominations
+            value: award_nominations
+          - label: IMDb Rating
+            value: imdb_rating
+          - label: Tomatometer®
+            value: tomatoes_critic_meter
+          - label: Tomatoes Audience Score
+            value: tomatoes_viewer_meter
+          # - label: Number of Movies
+          #   value: count
+    - id: column_time_period
+      type: Box
+      style:
+        --span: 5
+      blocks:
+        - id: radio_button_time_period
+          type: RadioSelector
+          style:
+            --span: 4
+          defaultValue: full_history
+          properties:
+            title: Select time period
+            Label:
+              inline: true
+            options:
+              - label: Full History
+                value: full_history
+              - label: Select period
+                value: select_period
+        - id: select_decade_from
+          type: Selector
+          style:
+            --span: 4
+          visible:
+            _mql_test:
+              radio_button_time_period: select_period
+          defaultValue: 1940
+          properties:
+            title: "From"
+            Label:
+              inline: true
+            options:
+              _request: req_filter_start_decade
+        - id: select_decade_to
+          type: Selector
+          style:
+            --span: 4
+          visible:
+            _mql_test:
+              radio_button_time_period: select_period
+          defaultValue: 2020
+          properties:
+            title: "To"
+            Label:
+              inline: true
+            options:
+              _request: req_filter_end_decade
+    - id: column_genres
+      type: Box
+      style:
+        --span: 5
+      blocks:
+        - id: radio_button_genres
+          type: RadioSelector
+          style:
+            --span: 4
+          defaultValue: all_genres
+          properties:
+            title: Select Genres
+            Label:
+              inline: true
+            options:
+              - label: All Genres
+                value: all_genres
+              - label: Select
+                value: select_genre
+        - id: multiple_select_genres
+          type: MultipleSelector
+          style:
+            --span: 8
+          visible:
+            _mql_test:
+              radio_button_genres: select_genre
+          properties:
+            title: Genres
+            placeholder: Select genres
+            showSearch: true
+            Label:
+              inline: true
+            options:
+              _request: req_filter_genres
+    - id: slider_tomatoes_reviews
+      type: RatingSlider
+      properties:
+        title: Minimum number of Rotten Tomato Critic Reviews
+        Label:
+          colon: false
+          inline: true
+        min: 0
+        max: 330
+        step: 10
+        disableIcons: true
+        disableNotApplicable: true
+        showDots: false
+        marks:
+          0: "0"
+          330: "330"
+  Extra:
+    - id: button_apply
+      type: Button
+      style:
+        --span: 8
+      properties:
+        title: Apply Filter
+        Icon: FilterOutlined
+      actions:
+        onClick:
+          - id: fetch_all
+            type: fetch()
+          - id: set_ratings
+            type: setState()
+            params:
+              rating_label:
+                _nunjucks: |
+                  {% if select_rating == 'imdb_rating' %}
+                    IMDb Rating
+                  {% elif select_rating == 'tomatoes_critic_meter' %}
+                    Tomatometer®
+                  {% elif select_rating == 'tomatoes_viewer_meter' %}
+                    Tomatoes Audience Score
+                  {% elif select_rating == 'award_wins' %}
+                    Award Wins
+                  {% elif select_rating == 'award_nominations' %}
+                    Award Nominations
+                  {% endif %}
+              rating_value:
+                _state: select_rating
+    - id: button_reset
+      type: Button
+      style:
+        --span: 4
+      properties:
+        title: Reset
+        type: normal
+        Icon: ReloadOutlined
+      actions:
+        onClick:
+          - id: reset
+            type: reset()

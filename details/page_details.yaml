@@ -1,19 +1,19 @@
 id: details
-type: page_header_menu
+type: PageHeaderMenu
 public: true
 properties:
   title: Movie Details 🎬
 actions:
   onInit:
     - id: set_url
-      type: set()
+      type: setState()
       params:
         _id: 
           _url_query: _id
     - id: fetch_all
       type: fetch()
     - id: set_results
-      type: set()
+      type: setState()
       params:
         details:
           _request: req_movie_details
@@ -21,14 +21,14 @@ actions:
           _request: req_movie_comments
 requests:
   - id: req_movie_details
-    type: mongodb_find_one
+    type: MongoDBFindOne
     connectionId: mongodb_mflix_movies
     properties:
       query:
         _id:
           _url_query: _id
   - id: req_movie_comments
-    type: mongodb_aggregation
+    type: MongoDBAggregation
     connectionId: mongodb_mflix_comments
     properties:
       pipeline:
@@ -41,7 +41,7 @@ requests:
 
 mutations:
   - id: mutation_post_comment
-    type: mongodb_insert_one
+    type: MongoDBInsertOne
     connectionId: mongodb_mflix_comments
     properties:
       doc:
@@ -58,17 +58,18 @@ mutations:
 
 blocks:
   - id: details_card
-    type: card
-    box:
+    type: Card
+    style:
       minHeight: 300
     blocks:
       - id: poster
-        type: markdown
-        box:
-          span: 4
+        type: Markdown
+        style:
+          --span: 4
           sm: 
-            span: 12
+            --span: 12
         properties:
+          renderHtml: true
           content:
             _nunjucks: |
               {% if _id %}
@@ -77,12 +78,13 @@ blocks:
               </div>
               {% endif %}
       - id: content
-        type: markdown
-        box:
-          span: 8
+        type: Markdown
+        style:
+          --span: 8
           sm: 
-            span: 12
+            --span: 12
         properties:
+          renderHtml: true
           content:
             _nunjucks: |
               {% if _id %}
@@ -106,12 +108,13 @@ blocks:
               {% endfor %}
               {% endif %}
       - id: comment_input
-        type: text_area_input
+        type: TextArea
         properties:
           title: Comment
       - id: comment_post_button
-        type: button
+        type: Button
         properties:
+          block: true
           title: Post
         actions:
           onClick:
@@ -119,7 +122,7 @@ blocks:
               type: mutate()
               params: mutation_post_comment
             - id: set_post_comment
-              type: set()
+              type: setState()
               params:
                 comments:
                   _mql_expr:
@@ -132,14 +135,15 @@ blocks:
                             _date: now
                       - _state: comments
       - id: comments
-        type: list
+        type: ControlledList
         properties:
           hideAddButton: true
           hideRemoveButton: true
         blocks:
           - id: comments.$.markdown
-            type: markdown
+            type: Markdown
             properties:
+              renderHtml: true
               content:
                 _nunjucks:
                   on:

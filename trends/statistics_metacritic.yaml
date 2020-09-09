@@ -1,22 +1,22 @@
 id: card_statistics_metacritic
-type: card
-box:
-  span: 3
+type: Card
+style:
+  --span: 3
   md: 
-    span: 6
+    --span: 6
 blocks:
   - id: statistic_metacritic_title
-    type: markdown
+    type: Markdown
     properties:
       content: '### Metacritic Scores'
   - id: statistic_metacritic_avg
-    type: statistic
+    type: Statistic
     properties:
-      title: Average
+      title: Avg
       value:
         _get:
           key: 0.avg_metacritic_score
-          on:
+          from:
             _request: req_total_statistics
       precision: 0
       valueStyle:

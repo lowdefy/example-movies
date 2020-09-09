@@ -1,14 +1,14 @@
 id: card_genre_heatmap
-type: card
+type: Card
 blocks:
   - id: spacer_genre_heatmap
-    type: grid
-    box:
-      span: 2
+    type: Box
+    style:
+      --span: 2
   - id: chart_genre_heatmap
-    type: amcharts_4_xy
-    box:
-      span: 8
+    type: AmCharts4XY
+    style:
+      --span: 8
     properties:
       data:
         _request: req_genre_heatmap
@@ -37,6 +37,6 @@ blocks:
       cursor:
         type: XYCursor
   - id: markdown_genre_heatmap
-    type: markdown
+    type: Markdown
     properties:
       content: "### Genre Heatmap"

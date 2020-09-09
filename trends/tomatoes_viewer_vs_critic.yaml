@@ -1,16 +1,16 @@
 id: card_tomatoes_viewer_vs_critic
-type: card
-box:
+type: Card
+style:
   justifyItems: center
 blocks:
   - id: chart_tomatoes_viewer_vs_critic
-    type: amcharts_4_xy
-    box:
+    type: AmCharts4XY
+    style:
       maxWidth: 600
     actions:
       onClick:
         - id: on_chart_click
-          type: set()
+          type: setState()
           params:
             tomatoes_viewer_vs_critic.selected: true
             tomatoes_viewer_vs_critic.selectedMovieIds:
@@ -101,7 +101,7 @@ blocks:
       numberFormatter:
         numberFormat: "#."
   - id: markdown_tomatoes_viewer_vs_critic
-    type: markdown
+    type: Markdown
     properties:
       content: |
         ### Rotten Tomatoes Audience vs Critic Scores
@@ -110,30 +110,30 @@ blocks:
 
         In general, the score given by audience members tends to be higher than the critic score. This can be seen since most points lie above the diagonal line, which is the line where both scores are equal. Click on the bubbles to see which movies are part of that bubble.
   - id: modal_tomatoes_viewer_vs_critic_lookup
-    type: modal
-    visible:
-      _state: tomatoes_viewer_vs_critic.selected
+    type: Modal
     properties:
       title: Rotten Tomatoes Viewer vs Critic Meters
-      width: 600
+      open: 
+        _state: tomatoes_viewer_vs_critic.selected
+      width: 950
     actions:
       onOk:
         - id: reset_modal
-          type: set()
+          type: setState()
           params:
             tomatoes_viewer_vs_critic.selected: false
             tomatoes_viewer_vs_critic.selectedMovieIds: []
       onCancel:
         - id: reset_modal
-          type: set()
+          type: setState()
           params:
             tomatoes_viewer_vs_critic.selected: false
             tomatoes_viewer_vs_critic.selectedMovieIds: []
     blocks:
       - id: table_tomatoes_viewer_vs_critic_lookup
-        type: ag_grid
-
+        type: AgGrid
         properties:
+          theme: basic
           rowData:
             _request: req_tomatoes_viewer_vs_critic_lookup
           columnDefs:
@@ -145,14 +145,14 @@ blocks:
             - headerName: Year
               field: year
               width: 100
-            - headerName: Viewer Reviews
+            - headerName: Num Reviews
               field: viewer_reviews
-              width: 100
+              width: 150
             - headerName: Critic Meter
               field: critic_meter
-              width: 100
+              width: 150
             - headerName: Viewer Meter
               field: viewer_meter
-              width: 100
+              width: 150
           defaultColDef:
             sortable: true
